@@ -1,0 +1,769 @@
+# Energy Actions Dataset — Porto Alegre & Rio Grande do Sul
+# Purpose: Cross-reference with geospatial data to identify nature-based solutions
+#          for energy mitigation and resilience, by neighborhood and asset.
+# Sources:
+#   - PMPOA23A_P6_PLACPOA_V2.0 (PLAC POA — Porto Alegre Climate Action Plan, Final Report)
+#   - PLAC_POA_ACOES_FINAL (PLAC POA — Action Summary Sheet)
+#   - PMPOA23A_240926_P6_ApêndiceA_V1.0 (PLAC POA — Appendix A: Instruments)
+#   - 29110651-proclima2050-versao-ingles (ProClima 2050 — RS State Climate Strategy)
+#   - 11130802-am-0001-23-plano-de-ação-climática (Rio Grande do Sul Climate Action Plan)
+# Generated: 2026-03-19
+
+metadata:
+  city: Porto Alegre
+  state: Rio Grande do Sul
+  country: Brazil
+  coordinate_system: EPSG:4326
+  geospatial_repo: geospatial-data (Open Earth Foundation)
+  intended_use: >
+    Cross-reference with geospatial layers to spatially prioritize nature-based
+    solution (NbS) actions for energy mitigation and resilience. Enables city
+    officials to identify WHERE to implement actions based on solar potential,
+    building density, population vulnerability, flood risk, and green cover.
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SECTION 1 — PORTO ALEGRE CITY ACTIONS (PLAC POA)
+# Strategic axis: POA Baixo Carbono (Low Carbon)
+# Sector: Energia (Energy) — Actions 6, 7, 8
+# ─────────────────────────────────────────────────────────────────────────────
+
+city_actions:
+
+  - action_id: POA-E-06
+    action_name: "Fomentar construções sustentáveis e incentivar tecnologias verdes em edifícios públicos, residenciais, comerciais, industriais e de serviços"
+    action_name_en: "Foster sustainable construction and promote green technologies in public, residential, commercial, industrial and service buildings"
+    source_document: PMPOA23A_P6_PLACPOA_V2.0
+    strategic_axis: POA Baixo Carbono
+    sector: Energy
+    sub_sector: Buildings / Stationary Energy
+    category: Policies, Plans and Programs
+    theme: "Efficiency | Sustainable Buildings"
+    status: Proposta (Proposed)
+    timeline: Medium Term (up to 2040)
+    investment_range: Low ($) — Own Municipal Resources
+    lead_institution: SMAMUS
+    partner_institutions: [SMP, SMF]
+
+    description: >
+      Expand the share of renewable energy sources in Porto Alegre's energy matrix,
+      focused on residential, commercial, industrial and service buildings. Includes:
+      broad promotion of the Municipal Sustainable Certification Program; mandatory
+      energy efficiency criteria in the Building Code; studies and incentives for
+      renewable energy generation (solar panels); adoption of natural lighting/ventilation;
+      nature-based solutions; rational water use standards; and fiscal incentives
+      (IPTU Sustentável) for retrofits.
+
+    justification: >
+      The Stationary Energy sector (all fuel combustion and electricity consumption
+      from stationary sources) represents ~23% of total GHG emissions in Porto Alegre.
+      The city launched a Sustainability Certification Program (Decree 21.789/2022)
+      rewarding efficient lighting, renewable generation and NbS integration.
+
+    sub_actions:
+      - id: "6.1"
+        description: "Widely promote the Municipal Sustainable Certification Program (Decree 21.789/2022)"
+        institution: SMAMUS
+        timeline: Short to Medium Term
+      - id: "6.2"
+        description: "Establish mandatory Sustainable Certification policies for new constructions"
+        institution: "SMAMUS, SMP"
+        timeline: Medium Term
+      - id: "6.3"
+        description: "Monitor adoption of certifications and incentives; evaluate results"
+        institution: SMAMUS
+        timeline: Routine
+      - id: "6.4"
+        description: "Update Building Code with mandatory energy and water efficiency criteria (LCA tool)"
+        institution: "SMAMUS, SMOI"
+        timeline: Short Term
+      - id: "6.5"
+        description: "Expand studies and incentives for renewable electricity in public, commercial, industrial, residential and service buildings"
+        institution: "SMAMUS, SMP"
+        timeline: Medium Term
+      - id: "6.6"
+        description: "Expand fiscal incentives (IPTU Sustentável) for new sustainable builds and retrofits"
+        institution: "SMAMUS, SMP, SMF"
+        timeline: Medium Term
+
+    quantitative_targets:
+      - metric: "% residential buildings with distributed renewable energy"
+        milestones: {2030: "8%", 2040: "25%", 2050: "40%"}
+      - metric: "% commercial buildings with distributed renewable energy"
+        milestones: {2030: "10%", 2040: "30%", 2050: "50%"}
+      - metric: "% industrial buildings with distributed renewable energy"
+        milestones: {2030: "5%", 2040: "15%", 2050: "20%"}
+
+    nbs_relevance: High
+    nbs_notes: >
+      Explicitly includes NbS in building design (green roofs, urban vegetation, natural
+      ventilation). Certification program awards points for NbS integration.
+      Solar panels + green roofs are co-benefits on the same building footprint.
+
+    connected_actions: [POA-E-07, POA-E-08, POA-NBS-27]
+
+    geospatial_crossref:
+      - dataset_id: global_solar_atlas
+        use: "Identify rooftops/neighborhoods with highest solar PV potential for prioritizing Action 6.5 and 6.6"
+        layer_type: solar
+        priority: Critical
+      - dataset_id: ghsl_built_up
+        use: "Map built-up density to estimate number of buildings eligible for certification/retrofit"
+        layer_type: built_up
+        priority: High
+      - dataset_id: ghsl_population
+        use: "Overlay population density to target densely populated neighborhoods for maximum impact"
+        layer_type: population
+        priority: High
+      - dataset_id: br_ibge
+        use: "Use census data (income, housing type) to identify neighborhoods for IPTU Sustentável equity targeting"
+        layer_type: census
+        priority: High
+      - dataset_id: dynamic_world
+        use: "Identify non-built land cover for NbS opportunity areas adjacent to buildings"
+        layer_type: land_cover
+        priority: Medium
+      - dataset_id: noaa_viirs_nightlights
+        use: "Proxy for energy consumption intensity by area; prioritize high-consumption zones"
+        layer_type: night_lights
+        priority: Medium
+      - dataset_id: modis_ndvi
+        use: "Identify areas with low vegetation cover as priority for green building retrofits with NbS"
+        layer_type: vegetation
+        priority: Medium
+
+    spatial_scope: City-wide (all neighborhoods / RGPs)
+    asset_types: [residential_buildings, commercial_buildings, industrial_buildings, public_buildings]
+
+  # ───────────────────────────────────────────────────────────────────────────
+
+  - action_id: POA-E-07
+    action_name: "Implementar Plano de transição energética nos prédios e espaços públicos"
+    action_name_en: "Implement Energy Transition Plan for public buildings and spaces"
+    source_document: PMPOA23A_P6_PLACPOA_V2.0
+    strategic_axis: POA Baixo Carbono
+    sector: Energy
+    sub_sector: "Public Buildings / Stationary Energy"
+    category: Physical Projects and Actions
+    theme: "Efficiency | Sustainable Buildings"
+    status: Proposta (Proposed)
+    timeline: Medium Term (up to 2040)
+    investment_range: Medium ($$) — Own Municipal Resources
+    lead_institution: SMAMUS
+    partner_institutions: [SMED, SMP, SMOI, DMLU]
+
+    description: >
+      Expand sustainability initiatives already underway in public buildings (especially
+      schools), including: installation of photovoltaic energy in public buildings (via PPP);
+      energy efficiency measures; replacement of high-consumption equipment;
+      installation of biodigesters; sustainable procurement criteria; and expansion of
+      composting programs in schools (with potential biogas generation).
+      The city already has 10 biodigesters installed in public schools.
+
+    justification: >
+      Porto Alegre has been expanding renewable energy consumption, especially through
+      a PPP for installation, operation and maintenance of PV plants in municipal buildings.
+      10 biodigesters already installed in public schools reduce organic waste sent to
+      landfills and have energy recovery potential.
+
+    sub_actions:
+      - id: "7.1"
+        description: "Study energy generation potential, energy efficiency measures and biodigester installation in public spaces (especially schools)"
+        institution: "SMAMUS, SMP"
+        timeline: Short Term
+      - id: "7.2"
+        description: "Develop ongoing composting and/or anaerobic digestion program in public schools"
+        institution: SMED
+        timeline: Short Term
+      - id: "7.3"
+        description: "Expand solar/wind renewable energy and energy efficiency in all Direct and Indirect Public Administration buildings, including public schools"
+        institution: "SMAMUS, SMED, SMP, SMOI"
+        timeline: Medium Term
+      - id: "7.4"
+        description: "Install new biodigesters in public buildings"
+        institution: "SMAMUS, SMED"
+        timeline: Medium Term
+      - id: "7.5"
+        description: "Establish waste management in public schools including composting of organic waste"
+        institution: "SMAMUS, SMED, DMLU"
+        timeline: Routine
+
+    quantitative_targets:
+      - metric: "% public buildings with renewable energy"
+        milestones: {2030: "100%", 2040: "100%", 2050: "100%"}
+      - metric: "% public schools energy self-sufficient"
+        milestones: {2030: "40%", 2040: "70%", 2050: "100%"}
+      - metric: "% public schools with composting"
+        milestones: {2030: "40%", 2040: "80%", 2050: "100%"}
+
+    nbs_relevance: High
+    nbs_notes: >
+      Biodigesters + composting in schools = urban organic waste NbS cycle.
+      Green roofs on public buildings provide thermal comfort (reduces cooling load)
+      and are eligible assets. School gardens + composting = circular NbS for energy.
+
+    connected_actions: [POA-E-06, POA-E-08, POA-EDU-14, POA-NBS-27]
+
+    geospatial_crossref:
+      - dataset_id: global_solar_atlas
+        use: "Identify which public buildings/schools have highest solar irradiance for PV installation prioritization (Action 7.1, 7.3)"
+        layer_type: solar
+        priority: Critical
+      - dataset_id: ghsl_built_up
+        use: "Map public building footprints in urban grid"
+        layer_type: built_up
+        priority: High
+      - dataset_id: poa_gtfs
+        use: "Cross-reference public transport stops with school locations — prioritize schools near transit hubs for solar + active mobility co-benefits"
+        layer_type: transport
+        priority: Medium
+      - dataset_id: br_ibge
+        use: "Identify school locations in socially vulnerable census tracts for equity-based prioritization"
+        layer_type: census
+        priority: High
+      - dataset_id: modis_ndvi
+        use: "Identify schools/public buildings in urban heat island areas (low NDVI) for NbS + energy resilience co-location"
+        layer_type: vegetation
+        priority: Medium
+      - dataset_id: dynamic_world
+        use: "Find public buildings with adjacent green space suitable for composting, biodigester siting or green buffer planting"
+        layer_type: land_cover
+        priority: Medium
+
+    spatial_scope: "All municipal public buildings and schools (city-wide)"
+    asset_types: [public_schools, municipal_buildings, public_spaces, parks]
+
+  # ───────────────────────────────────────────────────────────────────────────
+
+  - action_id: POA-E-08
+    action_name: "Implantar o Plano de Logística Sustentável em todos os órgãos da administração pública"
+    action_name_en: "Implement the Sustainable Logistics Plan across all public administration bodies"
+    source_document: PMPOA23A_P6_PLACPOA_V2.0
+    strategic_axis: POA Baixo Carbono
+    sector: Energy
+    sub_sector: "Public Administration / Energy Efficiency"
+    category: Policies, Plans and Programs
+    theme: "Efficiency | Public Management"
+    status: Em execução (In progress)
+    timeline: Short Term (up to 2030)
+    investment_range: Low ($) — Own Municipal Resources
+    lead_institution: Gabinete do Prefeito (Mayor's Office)
+    partner_institutions: [SMED, DMLU, "all secretariats and departments"]
+
+    description: >
+      The Sustainable Logistics Plan (PLS) addresses: combating waste (energy efficiency,
+      water consumption, waste management, paper reduction); sustainable public works;
+      sustainable procurement; and environmental education. Five thematic axes: Natural
+      Resource Consumption, Quality of Work Environment, Sustainable Procurement,
+      Waste Management, and Awareness/Training. Targets >20,000 municipal employees.
+      Will be extended to public schools. Annual sustainability forums planned.
+      Remote/hybrid work study for applicable sectors.
+
+    justification: >
+      PLS Decree 21.869/2023 established the plan. With 20,000+ public servants, the
+      behavioral change impact on energy and water consumption across city facilities
+      is significant for GHG reduction and public resource efficiency.
+
+    sub_actions:
+      - id: "8.1"
+        description: "Internal training for all municipal bodies and schools"
+        institution: "Mayor's Office + all departments"
+        timeline: Short Term
+      - id: "8.2"
+        description: "Implement PLS in all municipal schools (waste bins, organic/dry separation, periodic training)"
+        institution: "Mayor's Office, SMED, DMLU"
+        timeline: Short Term
+      - id: "8.3"
+        description: "Study implementation of hybrid/remote work in applicable sectors"
+        institution: "Mayor's Office"
+        timeline: Short Term
+      - id: "8.4"
+        description: "Monitor PLS results and publish progress on city channels (quarterly)"
+        institution: "Mayor's Office + all departments"
+        timeline: Routine
+
+    quantitative_targets:
+      - metric: "% public schools with PLS implemented"
+        milestones: {2030: "100%"}
+      - metric: "Water loss in residential/commercial/public sectors"
+        milestones: {2030: "≤25%", 2040: "≤20%", 2050: "≤20%"}
+      - metric: "Waste diverted from landfill"
+        milestones: {2030: "36%", 2040: "66%", 2050: "70%"}
+
+    nbs_relevance: Medium
+    nbs_notes: >
+      Indirect NbS link: sustainable procurement can include NbS materials and
+      services. Composting in schools feeds urban NbS cycles. Reduced energy demand
+      lowers infrastructure pressure on grid and distribution network.
+
+    connected_actions: [POA-E-07, POA-RES-10]
+
+    geospatial_crossref:
+      - dataset_id: ghsl_built_up
+        use: "Map municipal building footprint for PLS rollout planning"
+        layer_type: built_up
+        priority: Medium
+      - dataset_id: br_ibge
+        use: "Census data to map public facility distribution across neighborhoods for equitable PLS deployment"
+        layer_type: census
+        priority: Medium
+      - dataset_id: noaa_viirs_nightlights
+        use: "Proxy for current energy consumption intensity by municipal facility zone; track reduction over time"
+        layer_type: night_lights
+        priority: Low
+
+    spatial_scope: "All municipal secretariats, departments, and schools (city-wide)"
+    asset_types: [municipal_buildings, public_schools]
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SECTION 2 — RIO GRANDE DO SUL STATE ACTIONS (ProClima 2050)
+# Impacting Porto Alegre as state capital and major urban center
+# ─────────────────────────────────────────────────────────────────────────────
+
+state_actions:
+
+  - action_id: RS-E-01
+    action_name: "Green Hydrogen Program"
+    action_name_pt: "Programa Hidrogênio Verde"
+    source_document: "29110651-proclima2050-versao-ingles / 11130802-am-0001-23-plano-de-ação-climática"
+    level: State — Rio Grande do Sul
+    sector: Energy
+    sub_sector: "Clean Energy Production / Decarbonization"
+    strategic_objective: "Fair Energy Transition"
+
+    description: >
+      RS committed to decarbonization through green hydrogen produced from renewable
+      sources (wind + solar), especially in periods of low demand. Applied to transport,
+      industry and energy generation. Includes: feasibility studies for H2 production
+      in RS; partnerships with specialized companies; development of new energy/economic
+      matrix for RS decarbonization; creation of new productive identity for southern Brazil
+      based on advanced sustainable technologies.
+
+    impact_on_poa: >
+      Porto Alegre, as state capital and major industrial/service hub, will be a priority
+      consumer and distribution node for green hydrogen. Industrial zones (4th District
+      redevelopment area) are explicitly linked to this transition in PLAC POA Action 5.
+
+    nbs_relevance: Low-Medium
+    nbs_notes: >
+      Green H2 production requires large areas of renewable generation (solar/wind farms).
+      Site selection could consider degraded areas, promoting land restoration as NbS
+      co-benefit alongside energy generation.
+
+    geospatial_crossref:
+      - dataset_id: global_solar_atlas
+        use: "Identify high solar irradiance zones in RS for green H2 production via PV electrolysis"
+        layer_type: solar
+        priority: Critical
+      - dataset_id: copernicus_dem
+        use: "Elevation and terrain suitability for large-scale wind/solar installations"
+        layer_type: elevation
+        priority: Medium
+      - dataset_id: dynamic_world
+        use: "Identify degraded/non-vegetated land suitable for solar/wind + land restoration NbS"
+        layer_type: land_cover
+        priority: Medium
+      - dataset_id: hansen_forest_change
+        use: "Avoid siting energy infrastructure in areas of active deforestation or high forest cover"
+        layer_type: forest
+        priority: High
+
+    spatial_scope: State-wide (RS), with POA as key consumption/distribution node
+    asset_types: [industrial_zones, energy_plants, transport_corridors]
+
+  # ───────────────────────────────────────────────────────────────────────────
+
+  - action_id: RS-E-02
+    action_name: "Biogas-RS Program"
+    action_name_pt: "Programa Biogás-RS"
+    source_document: "29110651-proclima2050-versao-ingles / 11130802-am-0001-23-plano-de-ação-climática"
+    level: State — Rio Grande do Sul
+    sector: Energy
+    sub_sector: "Renewable Energy / Waste-to-Energy"
+    strategic_objective: "Fair Energy Transition"
+
+    description: >
+      Promote biogas production from organic waste decomposition (mainly agricultural).
+      Objectives: expand biodigester chain; provide treatment for agro-industrial organic waste;
+      increase renewable energy share in RS energy matrix; attract new investments; generate
+      rural income; reduce GHG from waste management; avoid water/soil contamination;
+      produce biogas + biofertilizers; expand biomethane supply across RS regions.
+
+    impact_on_poa: >
+      Porto Alegre already has 10 biodigesters in public schools (PLAC Action 7.4).
+      RS-level program provides regulatory/financial framework and supply chain that
+      enables POA to scale its urban biodigester program. Biomethane from RS
+      agricultural regions could feed into POA's energy grid.
+
+    nbs_relevance: High
+    nbs_notes: >
+      Biodigesters are a circular NbS: organic waste (food scraps, agricultural residue)
+      → biogas (energy) + biofertilizer (soil amendment). Directly supports urban
+      composting and food-energy-water nexus solutions. Wetland/floodplain areas near
+      POA could host constructed wetlands for additional biogas recovery.
+
+    geospatial_crossref:
+      - dataset_id: ghsl_built_up
+        use: "Identify urban organic waste hotspots (dense residential/commercial) for urban biodigester siting"
+        layer_type: built_up
+        priority: High
+      - dataset_id: ghsl_population
+        use: "Map population density to estimate organic waste generation volumes by neighborhood"
+        layer_type: population
+        priority: High
+      - dataset_id: dynamic_world
+        use: "Identify agricultural/rural land use near POA for rural biodigester chain"
+        layer_type: land_cover
+        priority: Medium
+      - dataset_id: jrc_global_surface_water
+        use: "Identify proximity to water bodies for constructed wetland NbS co-location with biodigesters"
+        layer_type: water
+        priority: Low
+
+    spatial_scope: "State-wide (RS); urban application in Porto Alegre schools and public buildings"
+    asset_types: [public_schools, agricultural_properties, waste_facilities, public_buildings]
+
+  # ───────────────────────────────────────────────────────────────────────────
+
+  - action_id: RS-E-03
+    action_name: "RS Renewable Energy Policy Package"
+    action_name_pt: "Pacote de Políticas de Energias Renováveis do RS"
+    source_document: "PMPOA23A_240926_P6_ApêndiceA_V1.0 / 11130802-am-0001-23-plano-de-ação-climática"
+    level: State — Rio Grande do Sul
+    sector: Energy
+    sub_sector: "Renewable Energy / Regulatory Framework"
+    strategic_objective: "Fair Energy Transition"
+
+    description: >
+      Legal and regulatory framework established by RS State that directly enables
+      Porto Alegre's energy transition:
+      - Lei Estadual 14.014/2012: RS Wind Energy Program (RS-Eólica) — Committee created
+      - Decreto Estadual 53.160/2016: RS Renewable Energy Program (RS Energias Renováveis)
+      - Lei Estadual 14.898/2016: State Policy on Solar Energy Incentives
+      - Lei Estadual 14.864/2016 (amended 2019): State Biomethane and Biogas Policy; RS-GÁS Program
+      - Lei Complementar 872/2020: Sustainability Policy, Climate Change Response and Rational Energy Use
+      - ProClima 2050 strategic goals: 50% GHG reduction by 2030; carbon neutrality by 2050
+
+    impact_on_poa: >
+      These state laws directly enable municipal solar programs, wind energy projects,
+      biogas generation and energy efficiency initiatives in POA. CEEE (Companhia Estadual
+      de Energia Elétrica) as state grid operator is a key partner for distributed generation.
+
+    nbs_relevance: Medium
+    nbs_notes: >
+      Regulatory framework includes NbS-compatible provisions: biomethane from organic
+      waste streams supports circular urban NbS. Solar incentive policy reduces barriers
+      for green roof + solar hybrid installations.
+
+    geospatial_crossref:
+      - dataset_id: global_solar_atlas
+        use: "Apply Lei 14.898/2016 solar incentives spatially — map priority zones in POA for solar uptake"
+        layer_type: solar
+        priority: Critical
+      - dataset_id: copernicus_dem
+        use: "Identify wind energy potential sites in RS territory linked to RS-Eólica program"
+        layer_type: elevation
+        priority: Medium
+
+    spatial_scope: "State-wide (RS) with direct regulatory impact on Porto Alegre"
+    asset_types: [energy_grid, public_buildings, residential_buildings, commercial_buildings]
+
+  # ───────────────────────────────────────────────────────────────────────────
+
+  - action_id: RS-E-04
+    action_name: "Carbon Market and Production Chain Decarbonization"
+    action_name_pt: "Mercado de Carbono e Descarbonização da Cadeia Produtiva"
+    source_document: "29110651-proclima2050-versao-ingles / 11130802-am-0001-23-plano-de-ação-climática"
+    level: State — Rio Grande do Sul
+    sector: Energy / Cross-sectoral
+    sub_sector: "Carbon Finance / Industrial Decarbonization"
+    strategic_objective: "Reducing GHG Emissions"
+
+    description: >
+      RS is developing carbon market strategies and regulations. Production chain
+      decarbonization actions include: carbon emissions assessment; reduction targets;
+      adoption of clean energy sources; energy efficiency; environmental regulations.
+      COSUD (Southern States Consortium) coordination for cross-border carbon market.
+      RS committed to carbon neutrality by 2050.
+
+    impact_on_poa: >
+      Porto Alegre's industrial sector (especially 4th District) will be subject to
+      decarbonization pressures. Carbon market revenues could fund NbS and renewable
+      energy projects in the city.
+
+    nbs_relevance: High
+    nbs_notes: >
+      Carbon market explicitly includes reforestation, carbon capture, and biodiversity
+      projects (ProClima 2050 Action 5: "develop carbon capture, reforestation and
+      renewable energy and energy efficiency projects"). NbS (urban forests, green
+      infrastructure) can generate carbon credits to cross-subsidize energy transition.
+
+    geospatial_crossref:
+      - dataset_id: hansen_forest_change
+        use: "Identify forest loss areas in RS/POA for reforestation NbS carbon projects"
+        layer_type: forest
+        priority: High
+      - dataset_id: modis_ndvi
+        use: "Vegetation baseline for carbon sequestration potential mapping"
+        layer_type: vegetation
+        priority: High
+      - dataset_id: dynamic_world
+        use: "Map land cover for carbon stock assessment and NbS opportunity identification"
+        layer_type: land_cover
+        priority: High
+      - dataset_id: ghsl_built_up
+        use: "Identify industrial zones for decarbonization prioritization"
+        layer_type: built_up
+        priority: Medium
+      - dataset_id: noaa_viirs_nightlights
+        use: "Proxy for industrial energy intensity by zone"
+        layer_type: night_lights
+        priority: Medium
+
+    spatial_scope: "State-wide (RS) with POA industrial/commercial zone focus"
+    asset_types: [industrial_zones, forests, degraded_land, commercial_zones]
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SECTION 3 — ENERGY RESILIENCE ACTIONS (cross-cutting)
+# Actions in POA plan that explicitly address energy resilience under climate risk
+# ─────────────────────────────────────────────────────────────────────────────
+
+resilience_actions:
+
+  - action_id: POA-RES-E-01
+    action_name: "Energy resilience co-benefit from flood risk and urban heat island actions"
+    source_document: PMPOA23A_P6_PLACPOA_V2.0
+    strategic_axis: POA Resiliente / POA Verde e Azul
+    sector: Energy / Resilience
+    sub_sector: "Climate Risk / Infrastructure Resilience"
+
+    description: >
+      Several POA Resiliente and POA Verde e Azul actions have direct energy resilience
+      co-benefits. Actions 21–22 (flood/drainage infrastructure) protect energy distribution
+      assets (substations, transformers) from inundation. Action 17 (Heat Wave Plan)
+      addresses demand spikes and cooling energy needs. Action 18 (meteorological stations)
+      monitors temperature/air quality to optimize energy demand management.
+      Action 27 (urban trees/arborization) provides shade reducing cooling loads by
+      5–10°C in urban canyons.
+
+    nbs_relevance: Critical
+    nbs_notes: >
+      Urban tree canopy (Action 27) is the PRIMARY NbS for energy resilience: reduces
+      cooling demand, protects energy infrastructure from heat, and reduces UHI.
+      Green/blue infrastructure (permeable surfaces, wetlands, parks) reduces
+      flood damage to energy assets. These are the highest-leverage NbS for
+      energy sector co-benefits.
+
+    related_plac_actions: [21, 22, 17, 18, 27, 28, 29, 30]
+
+    geospatial_crossref:
+      - dataset_id: copernicus_emsn194
+        use: "Map max water depth from 2024 RS flood event — identify energy infrastructure (substations, transformers) at flood risk"
+        layer_type: flood
+        priority: Critical
+      - dataset_id: merit_hydro_hnd
+        use: "Height Above Nearest Drainage — identify energy assets in low-lying flood-prone areas"
+        layer_type: hydrography
+        priority: Critical
+      - dataset_id: chirps_r99p_2024
+        use: "Extreme precipitation index — map areas of highest precipitation intensity threatening energy grid"
+        layer_type: extreme_precipitation
+        priority: High
+      - dataset_id: modis_ndvi
+        use: "Urban heat island proxy — low NDVI areas = high cooling demand. Target for urban tree canopy (NbS)"
+        layer_type: vegetation
+        priority: Critical
+      - dataset_id: ghsl_population
+        use: "Identify vulnerable populations in energy-disruption risk zones (flood + heat)"
+        layer_type: population
+        priority: High
+      - dataset_id: dynamic_world
+        use: "Map impervious surfaces vs green cover to quantify NbS cooling potential by neighborhood"
+        layer_type: land_cover
+        priority: High
+      - dataset_id: copernicus_dem
+        use: "Terrain elevation to identify at-risk energy infrastructure and drainage patterns"
+        layer_type: elevation
+        priority: High
+      - dataset_id: jrc_global_surface_water
+        use: "Permanent/seasonal water bodies — energy assets near water at flood risk"
+        layer_type: water
+        priority: Medium
+
+    spatial_scope: "Flood-prone neighborhoods, urban heat island zones, energy grid corridors"
+    asset_types: [electrical_substations, distribution_lines, public_lighting, schools, hospitals]
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SECTION 4 — NBS OPPORTUNITY MATRIX FOR ENERGY SECTOR
+# Maps NbS types to energy actions and geospatial datasets for site prioritization
+# ─────────────────────────────────────────────────────────────────────────────
+
+nbs_opportunity_matrix:
+
+  - nbs_type: "Urban Solar + Green Roof Hybrid"
+    description: >
+      Install solar PV panels on green roofs of public buildings and dense residential
+      blocks. Green roof provides insulation (reduces heating/cooling 15–30%), while
+      PV generates electricity. Co-located = dual mitigation benefit per m².
+    relevant_actions: [POA-E-06, POA-E-07]
+    prioritization_datasets:
+      - {dataset_id: global_solar_atlas, role: "Identify highest irradiance rooftops"}
+      - {dataset_id: ghsl_built_up, role: "Flat-roof building stock suitable for green roof + PV"}
+      - {dataset_id: modis_ndvi, role: "Low NDVI = urban heat island priority zones"}
+      - {dataset_id: ghsl_population, role: "Dense residential areas for maximum impact"}
+    spatial_unit: Building/Block/Neighborhood
+    implementation_scale: Building
+    co_benefits: [thermal_comfort, biodiversity, stormwater_retention, air_quality]
+
+  - nbs_type: "Urban Tree Canopy for Cooling & Grid Resilience"
+    description: >
+      Strategic street tree planting along energy distribution corridors and in
+      neighborhoods with high UHI intensity. Reduces cooling demand by 5–10%
+      in shaded buildings. Reduces transformer overload risk during heat waves.
+    relevant_actions: [POA-RES-E-01, POA-NBS-27]
+    prioritization_datasets:
+      - {dataset_id: modis_ndvi, role: "Identify low-canopy urban areas = UHI hotspots"}
+      - {dataset_id: dynamic_world, role: "Map impervious vs plantable surfaces"}
+      - {dataset_id: ghsl_population, role: "High density neighborhoods with highest cooling demand"}
+      - {dataset_id: noaa_viirs_nightlights, role: "Proxy for energy-intensive activity zones"}
+      - {dataset_id: copernicus_emsn194, role: "Avoid flood-prone areas for tree planting (root damage risk)"}
+    spatial_unit: Street segment / Neighborhood
+    implementation_scale: Neighborhood
+    co_benefits: [air_quality, biodiversity, mental_health, flood_mitigation, carbon_sequestration]
+
+  - nbs_type: "Biodigester + Composting in Schools"
+    description: >
+      Install biodigesters and composting systems in public schools to generate
+      biogas for cooking/heating, reduce organic waste to landfill, and produce
+      biofertilizer for school gardens (food-energy-water NbS nexus).
+    relevant_actions: [POA-E-07, RS-E-02]
+    prioritization_datasets:
+      - {dataset_id: ghsl_built_up, role: "Map public school building footprints"}
+      - {dataset_id: br_ibge, role: "Identify schools in low-income neighborhoods for equity focus"}
+      - {dataset_id: dynamic_world, role: "Identify schools with adequate open land for composting area"}
+    spatial_unit: Building (school)
+    implementation_scale: Building
+    co_benefits: [waste_reduction, soil_enrichment, food_security, environmental_education]
+
+  - nbs_type: "Floodplain Green Infrastructure for Energy Asset Protection"
+    description: >
+      Restore riparian buffers and urban wetlands in flood-prone areas near
+      critical energy infrastructure (substations, transformer stations) to absorb
+      floodwaters and protect assets from damage. Reduces grid disruption risk.
+    relevant_actions: [POA-RES-E-01]
+    prioritization_datasets:
+      - {dataset_id: copernicus_emsn194, role: "Identify energy assets in high flood depth zones"}
+      - {dataset_id: merit_hydro_hnd, role: "Height Above Nearest Drainage for flood exposure mapping"}
+      - {dataset_id: jrc_global_surface_water, role: "Map water body proximity to infrastructure"}
+      - {dataset_id: jrc_global_surface_water_occurrence, role: "Identify historically flooded areas"}
+      - {dataset_id: chirps_r99p_2024, role: "Extreme precipitation risk overlay"}
+      - {dataset_id: dynamic_world, role: "Identify degraded riparian zones for restoration"}
+    spatial_unit: Watershed / Sub-basin
+    implementation_scale: District / Watershed
+    co_benefits: [flood_control, biodiversity, water_quality, carbon_sequestration]
+
+  - nbs_type: "Reforestation / Urban Forest for Carbon + Energy Co-Benefits"
+    description: >
+      Plant urban forests and agroforestry systems in degraded urban/peri-urban
+      areas. Generates carbon credits (RS carbon market) to finance energy
+      transition projects. Reduces UHI and cooling energy demand.
+    relevant_actions: [RS-E-04, POA-NBS-27]
+    prioritization_datasets:
+      - {dataset_id: hansen_forest_change, role: "Identify historical forest loss areas for restoration"}
+      - {dataset_id: modis_ndvi, role: "Low vegetation areas in urban periphery"}
+      - {dataset_id: dynamic_world, role: "Degraded land suitable for reforestation"}
+      - {dataset_id: merit_hydro_hnd, role: "Avoid low-lying flood zones for reforestation"}
+      - {dataset_id: ghsl_degree_urbanization, role: "Peri-urban fringe areas for urban forest expansion"}
+    spatial_unit: Neighborhood / Urban fringe zone
+    implementation_scale: District / Metropolitan
+    co_benefits: [carbon_sequestration, biodiversity, water_regulation, food_production]
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SECTION 5 — DATASET CROSSREF INDEX
+# Quick reference: geospatial datasets in repo and their energy sector relevance
+# ─────────────────────────────────────────────────────────────────────────────
+
+geospatial_dataset_index:
+  - dataset_id: global_solar_atlas
+    energy_relevance: Critical
+    use_for: "Solar PV site prioritization for Actions 6, 7 and RS solar policy"
+    actions: [POA-E-06, POA-E-07, RS-E-03]
+
+  - dataset_id: ghsl_built_up
+    energy_relevance: High
+    use_for: "Building stock mapping for certification, retrofit and PLS programs"
+    actions: [POA-E-06, POA-E-07, POA-E-08]
+
+  - dataset_id: ghsl_population
+    energy_relevance: High
+    use_for: "Demand estimation; equity targeting of energy transition programs"
+    actions: [POA-E-06, POA-E-07, POA-RES-E-01]
+
+  - dataset_id: br_ibge
+    energy_relevance: High
+    use_for: "Socioeconomic targeting (IPTU Sustentável, school biodigesters in vulnerable areas)"
+    actions: [POA-E-06, POA-E-07, POA-E-08]
+
+  - dataset_id: noaa_viirs_nightlights
+    energy_relevance: Medium
+    use_for: "Energy consumption intensity proxy; industrial decarbonization zones"
+    actions: [POA-E-06, POA-E-08, RS-E-04]
+
+  - dataset_id: modis_ndvi
+    energy_relevance: High
+    use_for: "Urban heat island mapping → cooling demand → NbS tree canopy priority"
+    actions: [POA-E-06, POA-E-07, POA-RES-E-01]
+
+  - dataset_id: dynamic_world
+    energy_relevance: High
+    use_for: "Land cover for NbS siting (green roofs, biodigesters, reforestation)"
+    actions: [POA-E-06, RS-E-01, RS-E-02, RS-E-04, POA-RES-E-01]
+
+  - dataset_id: copernicus_emsn194
+    energy_relevance: Critical
+    use_for: "Flood depth for energy infrastructure risk mapping (2024 RS flood event)"
+    actions: [POA-RES-E-01]
+
+  - dataset_id: merit_hydro_hnd
+    energy_relevance: Critical
+    use_for: "Flood exposure of energy assets; drainage proximity"
+    actions: [POA-RES-E-01]
+
+  - dataset_id: chirps_r99p_2024
+    energy_relevance: High
+    use_for: "Extreme precipitation risk to energy grid"
+    actions: [POA-RES-E-01]
+
+  - dataset_id: chirps_r95p_2024
+    energy_relevance: Medium
+    use_for: "Moderate extreme precipitation risk overlay"
+    actions: [POA-RES-E-01]
+
+  - dataset_id: jrc_global_surface_water
+    energy_relevance: Medium
+    use_for: "Water body proximity for biodigester siting and floodplain NbS"
+    actions: [RS-E-02, POA-RES-E-01]
+
+  - dataset_id: jrc_global_surface_water_occurrence
+    energy_relevance: Medium
+    use_for: "Historical flood frequency for energy asset risk"
+    actions: [POA-RES-E-01]
+
+  - dataset_id: hansen_forest_change
+    energy_relevance: Medium
+    use_for: "Forest loss for reforestation NbS carbon projects (RS-E-04)"
+    actions: [RS-E-01, RS-E-04]
+
+  - dataset_id: copernicus_dem
+    energy_relevance: Medium
+    use_for: "Terrain for wind energy and drainage; elevation of energy assets"
+    actions: [RS-E-01, POA-RES-E-01]
+
+  - dataset_id: ghsl_degree_urbanization
+    energy_relevance: Low-Medium
+    use_for: "Urban-rural fringe for peri-urban renewable energy and reforestation"
+    actions: [RS-E-01, RS-E-04]
+
+  - dataset_id: poa_gtfs
+    energy_relevance: Low-Medium
+    use_for: "Public transport network for electric bus transition (Action 1.5); school proximity for biodigester equity"
+    actions: [POA-E-07]
