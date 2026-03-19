@@ -10,11 +10,12 @@ Energy Project Preparation PoC — site selection and technology selection at pr
 - This repo is documentation, data, analysis, and agent tooling — not a standalone app
 - Python for analysis scripts, JSON for data, Markdown for docs/prompts
 - Pre-feasibility scope: ranges and archetypes, not engineering precision
-- `city_data/` contains Porto Alegre PLAC (climate action plan) documents
+- `context/` contains baseline context organized by dimension (geographic, technology, financing, regulatory, projects)
 - See agents.md for agent role definitions and rules
 
 ## Important Files
 
+- `context/` — baseline context: geographic, technology, financing, regulatory, reference projects
 - `data/layers-energy-mapping.json` — maps Geo-Layer-Viewer layers to energy use cases
 - `data/energy-tech-catalog.json` — technology archetypes and parameters
 - `schemas/` — JSON Schema contracts for all structured data

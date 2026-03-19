@@ -38,7 +38,12 @@ This repo is the **energy domain brain** — documentation, reference data, anal
 ## Repo Structure
 
 ```
-city_data/             City-specific documents (PLAC climate action plan)
+context/               Baseline context that informs analysis
+  geographic/          Spatial context by scale (brazil, RS, porto-alegre)
+  technology/          Technology landscape, deployments, supply chain
+  financing/           Funder preferences, past approvals, eligibility
+  regulatory/          Energy policy, net metering, licensing, incentives
+  projects/            Reference projects — funded, implemented, lessons learned
 docs/                  Architecture, methodology, data source catalog
 data/                  Reference data (JSON) + curated research
   research/            Benchmarks, policies, case studies
