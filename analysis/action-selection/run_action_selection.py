@@ -13,14 +13,22 @@ import json
 import sys
 from datetime import datetime, timezone
 
-from .context_signals import collect_all_signals, load_action_catalog
+from .context_signals import collect_all_signals, load_action_catalog, load_merged_catalog
 from .action_scoring import score_actions, build_action_portfolio, DEFAULT_CRITERIA
 
 
-def run(city_locode: str) -> dict:
-    """Run action selection and return the full output conforming to action-selection schema."""
+def run(city_locode: str, include_ccglobal: bool = True) -> dict:
+    """Run action selection and return the full output conforming to action-selection schema.
+
+    Args:
+        city_locode: UN/LOCODE for the city (e.g. "BR POA")
+        include_ccglobal: If True, merge CityCatalyst Global actions into the catalog
+    """
     # Load inputs
-    catalog = load_action_catalog()
+    if include_ccglobal:
+        catalog = load_merged_catalog()
+    else:
+        catalog = load_action_catalog()
     actions = catalog["actions"]
     signals = collect_all_signals(city_locode)
 
@@ -63,6 +71,8 @@ def run(city_locode: str) -> dict:
         "actionPortfolio": portfolio,
         "summary": {
             "totalActionsEvaluated": len(evaluated),
+            "localCatalogActions": len([a for a in actions if a.get("source") != "ccglobal"]),
+            "ccglobalActions": len([a for a in actions if a.get("source") == "ccglobal"]),
             "priorityCount": len(portfolio["priorityActions"]),
             "analysisDate": datetime.now(timezone.utc).isoformat(),
             "notes": f"Action selection for {city_locode} using energy-action-catalog v{catalog['version']}",
@@ -76,9 +86,11 @@ def main():
     parser = argparse.ArgumentParser(description="Run action selection for a city")
     parser.add_argument("--city", required=True, help="UN/LOCODE (e.g., 'BR POA')")
     parser.add_argument("--output", help="Output file path (default: stdout)")
+    parser.add_argument("--no-ccglobal", action="store_true",
+                        help="Exclude CityCatalyst Global actions (use local catalog only)")
     args = parser.parse_args()
 
-    result = run(args.city)
+    result = run(args.city, include_ccglobal=not args.no_ccglobal)
 
     if args.output:
         with open(args.output, "w") as f:

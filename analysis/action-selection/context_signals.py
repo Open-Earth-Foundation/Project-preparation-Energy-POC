@@ -27,6 +27,31 @@ def load_action_catalog() -> dict:
         return json.load(f)
 
 
+def load_merged_catalog() -> dict:
+    """
+    Load the local energy action catalog merged with normalized CCGlobal actions.
+
+    Returns the same structure as energy-action-catalog.json but with
+    CCGlobal actions appended. Each CCGlobal action has source='ccglobal'.
+    """
+    from .ccglobal_extract import extract_all
+
+    catalog = load_action_catalog()
+    ccglobal_actions = extract_all()
+
+    # Avoid duplicates — skip CCGlobal actions whose id already exists
+    existing_ids = {a["id"] for a in catalog["actions"]}
+    new_actions = [a for a in ccglobal_actions if a["id"] not in existing_ids]
+
+    merged = dict(catalog)
+    merged["actions"] = catalog["actions"] + new_actions
+    merged["_ccglobal"] = {
+        "addedCount": len(new_actions),
+        "skippedDuplicates": len(ccglobal_actions) - len(new_actions),
+    }
+    return merged
+
+
 def extract_geographic_signals(city_locode: str) -> dict[str, Any]:
     """
     Extract signals from geographic context documents.

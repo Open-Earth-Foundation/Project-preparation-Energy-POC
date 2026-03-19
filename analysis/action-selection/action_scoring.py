@@ -114,24 +114,39 @@ def score_commitment_alignment(action: dict, commitments: list[str]) -> float:
     return min(100, score)
 
 
+GHG_RANGE_SCORES = {
+    "0-19": 10,
+    "20-39": 30,
+    "40-59": 50,
+    "60-79": 70,
+    "80-100": 90,
+}
+
+
 def score_impact_potential(action: dict) -> float:
     """Score 0-100 based on emissions and co-benefits potential."""
     indicators = action.get("impactIndicators", {})
     score = 50  # baseline
 
-    # Boost for multiple impact dimensions
-    if indicators.get("emissionsReduction"):
-        score += 15
-    if indicators.get("costSavings"):
-        score += 10
-    if indicators.get("reliabilityImprovement"):
-        score += 15
-    if indicators.get("resilience"):
-        score += 15
-    if indicators.get("airQuality"):
-        score += 10
-    if indicators.get("beneficiaries"):
-        score += 5
+    # For CCGlobal actions, use the GHG reduction potential directly
+    ghg = action.get("ghgReductionPotential", {})
+    if ghg:
+        max_ghg_score = max(GHG_RANGE_SCORES.get(v, 0) for v in ghg.values()) if ghg else 0
+        score = 30 + int(max_ghg_score * 0.7)  # scale to 30-93 range
+    else:
+        # Boost for multiple impact dimensions (local catalog actions)
+        if indicators.get("emissionsReduction"):
+            score += 15
+        if indicators.get("costSavings"):
+            score += 10
+        if indicators.get("reliabilityImprovement"):
+            score += 15
+        if indicators.get("resilience"):
+            score += 15
+        if indicators.get("airQuality"):
+            score += 10
+        if indicators.get("beneficiaries"):
+            score += 5
 
     return min(100, score)
 
@@ -157,7 +172,14 @@ def score_financing_readiness(action: dict, signals: dict) -> float:
     elif action.get("maturityTier") == "scaling":
         score += 10
 
-    return min(100, score)
+    # For CCGlobal actions, low cost = easier to finance
+    cost_level = action.get("costLevel")
+    if cost_level == "low":
+        score += 10
+    elif cost_level == "high":
+        score -= 5
+
+    return min(100, max(0, score))
 
 
 def score_implementation_readiness(action: dict) -> float:
