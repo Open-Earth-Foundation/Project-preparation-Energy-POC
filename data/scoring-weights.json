@@ -1,7 +1,44 @@
 {
   "version": "0.1.0",
   "lastUpdated": "2026-03-19",
-  "description": "Default scoring weights for multi-criteria site assessment. Weights sum to 1.0. Adjust per project context.",
+  "description": "Default scoring weights for multi-criteria assessment. Weights sum to 1.0 per section. Adjust per project context.",
+  "actionScoring": {
+    "weights": {
+      "contextAlignment": {
+        "weight": 0.25,
+        "description": "How well the action addresses identified problems and matches supportive context signals"
+      },
+      "commitmentAlignment": {
+        "weight": 0.20,
+        "description": "Action aligns with existing city/state plans (PLAC, TEJ, Pacto Biometano, etc.)"
+      },
+      "impactPotential": {
+        "weight": 0.20,
+        "description": "Emissions reduction + co-benefits (resilience, equity, cost savings)"
+      },
+      "financingReadiness": {
+        "weight": 0.15,
+        "description": "Funder priorities match, financing archetypes available and suitable"
+      },
+      "implementationReadiness": {
+        "weight": 0.10,
+        "description": "Prerequisites achievable, technology proven, timeline feasible"
+      },
+      "portfolioSynergy": {
+        "weight": 0.10,
+        "description": "Action complements other high-scoring actions in the portfolio"
+      }
+    },
+    "totalWeight": 1.0,
+    "scoringMethod": "weighted_sum",
+    "outputRange": { "min": 0, "max": 100 },
+    "recommendationThresholds": {
+      "priority": 70,
+      "include": 55,
+      "conditional": 40,
+      "defer": 0
+    }
+  },
   "siteScoring": {
     "weights": {
       "solarResource": {
