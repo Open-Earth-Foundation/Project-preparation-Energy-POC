@@ -12,7 +12,7 @@ A city user (Porto Alegre municipal staff) needs to act on two solar PV interven
 
 **Two interventions:**
 1. **Municipal Solar Portfolio** — Select a priority scope for rooftop solar on city-owned buildings (POA-E-07)
-2. **Building Solar Policy Design** — Answer guided questions to shape the residential/commercial solar mandate (POA-E-06)
+2. **Building Solar Regulation** — IPTU Sustentável incentive design for commercial buildings, with geospatial assessment and scenario modeling (POA-E-06)
 
 **User persona:** City planner who controls municipal buildings and can design policy. Not a GIS expert.
 
@@ -72,35 +72,78 @@ interface MunicipalBuilding {
 
 ---
 
-## Intervention 2 — Building Solar Policy Design
+## Intervention 2 — Building Solar Regulation
 
 ### What it is
-The city is designing a solar mandate for residential/commercial buildings via three policy instruments: Building Code update, Sustainability Certification, and IPTU Sustentável (property tax incentive). This questionnaire helps the city planner understand which geospatial factors should shape the policy.
+The city is designing solar regulation for buildings via three policy instruments: IPTU Sustentável (property tax incentive), Building Certification, and Building Code update. The MVP focuses on IPTU Sustentável for **commercial buildings only** — the city wants to identify which neighborhoods offer the best trade-off between solar energy potential and IPTU revenue forfeited.
 
 ### Key metrics (from PLAC POA-E-06)
-- Target: 146.2 MWp by 2030 (8% residential HH, 10% commercial buildings)
+- Target: 146.2 MWp by 2030 (10% commercial buildings)
 - Leverage: R$1 govt → R$110 private investment
 - 26,702 tCO2e/year avoided, R$9/tCO2e govt cost
-- Residential: 3–5 kWp/household | Commercial: 20–200 kWp/building
+- Commercial: 20–200 kWp/building
 
-### Policy questions (6 questions, each with a linked map layer)
+### Policy instruments (landing page)
+| Instrument | Status | Description |
+|-----------|--------|-------------|
+| **IPTU Sustentável** | Active (clickable) | Property tax discount to incentivize commercial solar PV |
+| **Building Certification** | Coming soon (disabled) | Sustainability certification requirements |
+| **Building Code** | Coming soon (disabled) | Mandatory solar in new construction |
 
-| # | Question | Layer to toggle | Why it matters |
-|---|----------|----------------|----------------|
-| Q1 | Should the mandate apply citywide or only in high-solar zones? | `solar-neighbourhoods` (PVOUT) | Solar resource varies; stricter mandates make sense where resource is best |
-| Q2 | Should low-income neighborhoods get larger IPTU tax discounts? | `ibge-indicators` (income/poverty) | Equity design — PLAC explicitly targets low-income areas for incentives |
-| Q3 | Should the policy prioritize new construction, retrofits, or both? | `ghsl-built` (built-up density) | Building code only applies to new builds; IPTU drives retrofits |
-| Q4 | Should flood-risk areas require resilience measures before qualifying? | `flood-risk-index` | PV systems last 25 years — flood risk is a long-term viability factor |
-| Q5 | Should historic/heritage districts be excluded from the mandate? | *(no layer — note data gap)* | Porto Alegre has protected districts where panel installation is restricted |
-| Q6 | Should areas with higher electricity consumption get lower incentives (faster payback anyway)? | `viirs-night-lights` (grid/consumption proxy) | Calibrates incentive levels — high-consumption zones need less subsidy |
+### IPTU Sustentável — 3 tabs
 
-### UX Flow
-1. User opens "Building Solar Policy" intervention card
-2. Side panel opens with step-by-step questions (progress indicator: 1 of 6)
-3. Each question has: question text, brief explanation, answer options (Yes/No/Partial), and a **"View on map"** button that toggles the relevant layer
-4. User can navigate back/forward through questions
-5. Final step: summary of policy choices with referenced layers
-6. "Export summary" button copies a text summary to clipboard
+#### Tab 1: Geospatial Assessment
+
+**Map visualization:**
+- City divided by neighborhoods/zones, color-coded into 3 tiers:
+  - **High potential** (green) — highest energy creation potential + lowest current IPTU revenue → best ROI for the city
+  - **Medium potential** (amber) — moderate cross-score
+  - **Low potential** (gray) — low energy potential or high IPTU revenue at stake
+- **Commercial buildings** shown as interactive markers within each neighborhood
+- **Residential buildings** shown as grayed-out, non-clickable markers (visible for context but not actionable)
+
+**Cross-analysis logic:**
+The priority ranking combines two factors:
+1. **Solar energy potential** of commercial buildings in the neighborhood (kWp based on solar exposure + building footprints)
+2. **Current IPTU revenue** from commercial buildings in the neighborhood (R$/year)
+
+Best neighborhoods = high solar potential + low IPTU revenue (city forfeits less revenue for more energy impact).
+
+**Neighborhood detail card** (shown when clicking a neighborhood):
+- Neighborhood name and tier badge
+- Number of commercial buildings
+- Total solar energy potential (kWp) based on solar exposure and building footprints
+- Current annual IPTU revenue from commercial buildings (R$/year)
+- **Scenario A — 5% IPTU discount:**
+  - Revenue lost per year (R$)
+  - Estimated PV capacity installed (kWp) — based on assumed adoption rate from the incentive
+  - Estimated annual energy generation (MWh/year)
+  - CO2 avoided (tCO2e/year)
+- **Scenario B — 10% IPTU discount:**
+  - Revenue lost per year (R$)
+  - Estimated PV capacity installed (kWp) — higher adoption rate assumed
+  - Estimated annual energy generation (MWh/year)
+  - CO2 avoided (tCO2e/year)
+
+#### Tab 2: Similar Projects
+
+A list of reference projects from other cities/states that implemented IPTU-based solar incentives:
+- Each entry shows: city/state name, program name, brief summary of results and learnings (2–3 sentences), and a "Learn more" link
+- Mock data for MVP (3–4 examples from Brazilian cities that have IPTU Verde/Sustentável programs)
+
+#### Tab 3: Next Steps
+
+**Primary next step — Grid capacity assessment:**
+- Prominent card explaining that the selected high-potential neighborhoods need grid capacity validation before implementation
+- Suggested approach: "Request a joint technical assessment with [local energy distributor — CEEE Equatorial] to evaluate feeder capacity, transformer headroom, and interconnection requirements for the priority neighborhoods"
+- Action items: schedule meeting, share neighborhood list, request capacity data per feeder
+
+**Other pending data to collect:**
+- Updated commercial building registry with roof area measurements
+- Current IPTU billing records by neighborhood (to validate revenue estimates)
+- Historical solar permit data (existing PV installations in commercial buildings)
+- Heritage/preservation zone boundaries (some neighborhoods may have restrictions)
+- Flood risk overlay for long-term PV investment viability
 
 ---
 
@@ -111,7 +154,7 @@ A simple landing view before either intervention:
 - **Header:** "Porto Alegre — Solar PV Interventions"
 - **Two cards side by side:**
   - Card 1: Municipal Solar Portfolio — shows key metrics (37 MWp, 560 buildings, R$41.6M/yr savings, 6,759 tCO2e/yr)
-  - Card 2: Building Solar Policy — shows key metrics (146.2 MWp target, 1:110 leverage ratio, 26,702 tCO2e/yr)
+  - Card 2: Building Solar Regulation — shows key metrics (146.2 MWp target, 1:110 leverage ratio, 26,702 tCO2e/yr)
 - Clicking a card opens the respective intervention panel
 
 ---
@@ -132,7 +175,7 @@ Create a Solar PV Intervention module in this React/TypeScript/Leaflet app.
 ### 1. Intervention Dashboard (new route `/interventions` or as a new right-side panel)
 Two clickable cards:
 - "Municipal Solar Portfolio" — 37 MWp | 560 buildings | R$41.6M/yr savings | 6,759 tCO2e/yr avoided
-- "Building Solar Policy" — 146.2 MWp target | 1:110 leverage | 26,702 tCO2e/yr avoided
+- "Building Solar Regulation" — 146.2 MWp target | 1:110 leverage | 26,702 tCO2e/yr avoided
 
 Style: dark theme (bg-background), brand color #001fa8. Use shadcn Card components.
 
@@ -209,86 +252,153 @@ Generate 20 realistic sample buildings across Porto Alegre (lat ~-30.03, lng ~-5
 
 ---
 
-### Prompt 2 — Building Solar Policy Questionnaire
+### Prompt 2 — Building Solar Regulation (IPTU Sustentável)
 
 ```
-Add the second intervention: Building Solar Policy Design questionnaire.
+Add the second intervention: Building Solar Regulation with IPTU Sustentável focus.
 
 ## What to build
 
-A side panel (shadcn Sheet, right side) that opens when "Building Solar Policy" card is clicked.
+A side panel (shadcn Sheet, right side) that opens when "Building Solar Regulation" card is clicked.
 
-**Header:** "Building Solar Policy Design" | Progress indicator: "Step 2 of 6"
+### Landing: 3 policy instrument buttons
+Show 3 buttons/cards stacked vertically:
+1. **"IPTU Sustentável"** — clickable, styled as primary action. Subtitle: "Property tax discount for commercial solar PV"
+2. **"Building Certification"** — disabled/grayed out with a "Coming soon" badge
+3. **"Building Code"** — disabled/grayed out with a "Coming soon" badge
 
-**Step-by-step questions** (one question visible at a time):
+When "IPTU Sustentável" is clicked, show 3 tabs below:
 
-For each question, show:
-1. Question text (large, readable)
-2. 2-sentence explanation of why this matters
-3. Answer options as toggle buttons: Yes / Partial / No
-4. A "View on map" button that toggles the relevant geo layer
+### Tab 1: Geospatial Assessment
 
-**The 6 questions:**
+**Map visualization:**
+- Divide the city map by neighborhoods/zones into 3 tiers, color-coded:
+  - High potential = green
+  - Medium potential = amber
+  - Low potential = gray
+- The tier ranking is a cross-analysis: **highest solar energy potential on commercial buildings** × **lowest current IPTU revenue** from those buildings. Best = high energy + low revenue (city forfeits less for more impact).
+- Show **commercial buildings** as interactive colored markers (match neighborhood tier color)
+- Show **residential buildings** as grayed-out, non-clickable markers (visible for spatial context but not actionable). Add a legend note: "Residential — not in scope"
 
-Q1: "Apply the mandate citywide or only in high-solar zones?"
-- Explanation: Solar resource varies across Porto Alegre (GHI 1,500–1,700 kWh/m²/yr). Zones with best resource can support stricter minimum system sizes.
-- Map layer: solar-neighbourhoods (toggle PVOUT layer)
+**Neighborhood detail card** (opens when clicking a neighborhood polygon or any commercial building in it):
+- Neighborhood name + tier badge (High/Medium/Low)
+- Number of commercial buildings
+- Total solar energy potential (kWp) — based on solar exposure + building footprints
+- Current annual IPTU revenue from commercial buildings (R$/year)
+- **Two scenario cards side by side:**
 
-Q2: "Give larger IPTU tax discounts in low-income neighborhoods?"
-- Explanation: The PLAC explicitly targets IPTU Sustentável incentives toward low-income areas. This addresses the upfront cost barrier for homeowners.
-- Map layer: ibge-indicators (toggle income/poverty layer)
+  **Scenario A — 5% IPTU Discount:**
+  | Metric | Value |
+  |--------|-------|
+  | Revenue lost/year | R$ [calculated] |
+  | Estimated PV installed | [X] kWp |
+  | Annual generation | [X] MWh/year |
+  | CO2 avoided | [X] tCO2e/year |
 
-Q3: "Target new construction, existing buildings (retrofits), or both?"
-- Options: New only / Retrofits only / Both
-- Explanation: Building Code update applies to new construction only. IPTU Sustentável is the primary driver for retrofits on existing buildings.
-- Map layer: ghsl-built (built-up density, proxy for existing stock concentration)
+  **Scenario B — 10% IPTU Discount:**
+  | Metric | Value |
+  |--------|-------|
+  | Revenue lost/year | R$ [calculated] |
+  | Estimated PV installed | [X] kWp |
+  | Annual generation | [X] MWh/year |
+  | CO2 avoided | [X] tCO2e/year |
 
-Q4: "Require flood resilience measures for buildings in flood-risk zones?"
-- Explanation: Solar PV systems last 25 years. High-risk flood zones may see increased flooding by 2050. Resilience measures protect the investment.
-- Map layer: flood-risk-index
+  Assumptions for mock data:
+  - 5% discount → ~15% adoption rate among commercial buildings
+  - 10% discount → ~30% adoption rate
+  - Average commercial system: 50 kWp
+  - 1,405 kWh/kWp/year generation
+  - 0.183 tCO2/MWh grid emission factor
 
-Q5: "Exclude heritage/historic districts from the solar mandate?"
-- Explanation: Porto Alegre has protected historic districts where panel installation may be restricted by IPHAE and IPHAN.
-- Map layer: none — show a note: "Heritage boundary data not yet in platform — flag for planning review"
+### Tab 2: Similar Projects
 
-Q6: "Reduce incentives in areas with high electricity consumption (they have faster payback anyway)?"
-- Explanation: Buildings with high consumption reach payback in ~3 years without large incentives. Redirecting subsidies to lower-consumption areas improves equity.
-- Map layer: viirs-night-lights (proxy for grid/consumption density)
+A scrollable list of 4 reference projects:
 
-**Navigation:** Back / Next buttons. Next is disabled until an answer is selected.
+1. **Salvador, BA — IPTU Verde** — Since 2015, property tax discounts up to 10% for buildings with sustainability features including solar. Over 500 commercial properties enrolled. Key learning: adoption accelerated when combined with simplified permitting.
+   - Link: "Learn more →"
 
-**Summary step** (after Q6):
-- Show all 6 questions with the user's answers
-- Show a "Referenced layers" section listing the layers used
-- "Export summary" button — copies a formatted text to clipboard:
-  ```
-  Porto Alegre — Building Solar Policy Design
-  Date: [today]
+2. **Guarulhos, SP — IPTU Verde** — Offers 5–20% IPTU discount for green buildings. Commercial uptake higher than residential due to faster payback. Key learning: larger buildings (>500m²) adopt at 3× rate of smaller ones.
+   - Link: "Learn more →"
 
-  Q1 Mandate scope: [answer]
-  Q2 Equity targeting: [answer]
-  Q3 Building type: [answer]
-  Q4 Flood resilience: [answer]
-  Q5 Heritage exclusion: [answer]
-  Q6 Incentive calibration: [answer]
+3. **Recife, PE — IPTU Sustentável** — 5–10% discount program launched 2020. Focus on commercial and mixed-use. Key learning: pairing with low-interest BNDES financing doubled adoption.
+   - Link: "Learn more →"
 
-  Key metrics: 146.2 MWp target | 26,702 tCO2e/yr | R$9/tCO2e govt cost
-  ```
+4. **Belo Horizonte, MG — IPTU Verde** — Property tax incentive linked to sustainability certification. Key learning: clear technical guidelines for PV installation reduced application processing time by 60%.
+   - Link: "Learn more →"
 
-## State
+Each card: city name as title, 2–3 sentence summary, "Learn more →" link (placeholder URL for MVP).
+
+### Tab 3: Next Steps
+
+**Primary next step card** (prominent, with an icon):
+- Title: "Define Grid Capacity for Priority Neighborhoods"
+- Body: "Before implementing the IPTU Sustentável incentive, the selected high-potential neighborhoods need grid capacity validation. The local distribution grid may have feeder or transformer limitations that constrain how much distributed solar can be interconnected."
+- **Suggested approach:** "Request a joint technical assessment with CEEE Equatorial (the local energy distributor) to evaluate: feeder capacity and current loading, transformer headroom for reverse power flow, interconnection requirements and timelines for each priority neighborhood."
+- Call-to-action button: "Download neighborhood list for distributor" (generates a simple text/CSV of selected neighborhoods + estimated kWp)
+
+**Other pending data** (bulleted list):
+- Updated commercial building registry with roof area measurements
+- Current IPTU billing records by neighborhood (to validate revenue estimates)
+- Historical solar permit data (existing PV installations in commercial buildings)
+- Heritage/preservation zone boundaries (some neighborhoods may have installation restrictions)
+- Flood risk overlay for long-term PV investment viability assessment
+
+## Data model
 ```typescript
-interface PolicyAnswer {
-  questionId: string
-  answer: "yes" | "partial" | "no" | string  // string for Q3 which has 3 options
+interface Neighborhood {
+  id: string
+  name: string
+  tier: "high" | "medium" | "low"
+  bounds: [number, number][]     // polygon coords for neighborhood boundary
+  commercialBuildings: number
+  residentialBuildings: number
+  solarPotentialKwp: number      // total commercial solar potential
+  iptuRevenueBrl: number         // annual IPTU from commercial buildings
+  avgSolarGhi: number            // kWh/m²/year
+  scenario5pct: {
+    revenueLostBrl: number
+    pvInstalledKwp: number
+    annualGenerationMwh: number
+    co2AvoidedTons: number
+  }
+  scenario10pct: {
+    revenueLostBrl: number
+    pvInstalledKwp: number
+    annualGenerationMwh: number
+    co2AvoidedTons: number
+  }
 }
-// useState<PolicyAnswer[]>([])
+
+interface CommercialBuilding {
+  id: string
+  neighborhoodId: string
+  lat: number
+  lng: number
+  type: "commercial"
+  roofAreaM2: number
+  solarPotentialKwp: number
+}
+
+interface ResidentialBuilding {
+  id: string
+  neighborhoodId: string
+  lat: number
+  lng: number
+  type: "residential"
+  // No other fields needed — these are display-only, grayed out
+}
 ```
 
+Generate mock data for 10 Porto Alegre neighborhoods with realistic names (Centro Histórico, Moinhos de Vento, Cidade Baixa, Bom Fim, Petrópolis, Menino Deus, Floresta, Auxiliadora, Santana, Partenon). Spread across tiers: 3 high, 4 medium, 3 low. Each neighborhood has 5–15 commercial buildings and 10–30 residential buildings as markers.
+
 ## Tech notes
-- Component: client/src/components/interventions/PolicyDesignPanel.tsx
-- shadcn Sheet, Button, Progress (or manual step dots), Separator, Badge
-- "View on map" calls existing layer toggle mechanism (check how EvidenceDrawer handles this)
-- Client-side only, no persistence
+- Component: client/src/components/interventions/SolarRegulationPanel.tsx
+- shadcn Sheet, Tabs, Card, Badge, Button, ScrollArea, Separator
+- Map: Leaflet Polygon for neighborhoods (colored by tier), CircleMarker for buildings
+- Commercial markers: colored by tier, clickable
+- Residential markers: gray (#9ca3af), not clickable, lower opacity (0.4)
+- State: React useState (client-side only, no DB)
+- Selected neighborhood stored in state, detail card renders based on selection
 ```
 
 ---
@@ -299,11 +409,12 @@ interface PolicyAnswer {
 Wire up the two intervention panels to the main app and polish.
 
 1. Add an "Interventions" button to the existing toolbar/nav — opens the dashboard
-2. When "View on map" is clicked in the policy panel, actually toggle the layer using the existing layer config system (layer IDs are in client/src/data/layer-configs.ts)
+2. When a neighborhood is selected in the Regulation panel, highlight its polygon on the map and zoom to it
 3. When a portfolio scope is selected in Panel 1, show a persistent summary chip somewhere visible on the map (e.g. "High Priority scope: 112 buildings selected")
 4. Make sure both panels can be open one at a time (closing one opens the other if user navigates back to dashboard)
 5. Mobile: panels should be full-width on small screens
 6. Add a simple "Reset" option to each panel to clear selections
+7. "Download neighborhood list" button in Next Steps tab generates a simple CSV with neighborhood name, tier, commercial buildings count, solar potential kWp
 ```
 
 ---
@@ -316,4 +427,4 @@ Wire up the two intervention panels to the main app and polish.
 | `data/research/benchmarks/solar-pv-brazil-2024.json` | R$4,500/kWp, 1,405 kWh/kWp/yr |
 | `data/layers-energy-mapping.json` | Layer IDs for solar, flood, IBGE, built-up, night lights |
 | `analysis/action-selection/intervention_solar-mandate-residential-commercial.md` | Policy intervention definition and assumptions |
-| `data/Intervention_BuildingSolarPolicy_dataAnalysis/assumptions.md` | 13 design assumptions behind the 6 policy questions |
+| `data/Intervention_BuildingSolarPolicy_dataAnalysis/assumptions.md` | Design assumptions behind IPTU Sustentável scenarios |
