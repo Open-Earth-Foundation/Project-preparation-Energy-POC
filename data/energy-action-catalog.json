@@ -1,0 +1,274 @@
+{
+  "version": "0.1.0",
+  "lastUpdated": "2026-03-19",
+  "description": "Energy action archetypes for pre-feasibility assessment. Actions are strategic interventions — upstream of site and technology selection. Each action can map to one or more technologies and financing archetypes.",
+  "actions": [
+    {
+      "id": "solar-public-buildings",
+      "name": "Solar PV on Public Buildings",
+      "category": "generation",
+      "sector": "I.2",
+      "sectorLabel": "Commercial/Institutional",
+      "description": "Install rooftop or carport solar PV on municipal buildings (schools, hospitals, admin buildings) to reduce grid electricity costs and demonstrate public commitment.",
+      "typicalScale": { "min": 0.05, "max": 5, "unit": "MWp" },
+      "technologyIds": ["solar-pv-rooftop"],
+      "financingArchetypeIds": ["municipal-budget", "climate-fund-grant", "dfi-concessional"],
+      "prerequisites": [
+        "Building structural assessment for rooftop load",
+        "Net metering or self-consumption policy in place",
+        "Municipal procurement authorization"
+      ],
+      "impactIndicators": {
+        "emissionsReduction": { "range": "50-200 tCO2e/MWp/year", "basis": "Grid emission factor for BR South" },
+        "costSavings": { "range": "15-30%", "basis": "Electricity bill reduction" },
+        "beneficiaries": "Direct: building occupants; indirect: municipal budget savings"
+      },
+      "contextSignals": {
+        "supportive": [
+          "Net metering policy active (Brazil MMGD)",
+          "High electricity tariffs (>0.12 USD/kWh)",
+          "Municipal renewable procurement mandate",
+          "Solar GHI > 1400 kWh/m2/year"
+        ],
+        "blocking": [
+          "Building stock structurally unsuitable",
+          "No grid connection at building"
+        ]
+      },
+      "localRelevance": {
+        "portoAlegre": "High — POA already procures renewable energy for 60 public facilities. Rooftop solar is a natural next step. PLAC identifies this as a priority action."
+      },
+      "maturityTier": "proven",
+      "implementationTimeline": "6-18 months"
+    },
+    {
+      "id": "grid-resilience-upgrade",
+      "name": "Distribution Grid Resilience Upgrade",
+      "category": "infrastructure",
+      "sector": "I.4",
+      "sectorLabel": "Energy Industries",
+      "description": "Upgrade and harden distribution network to reduce outage frequency and duration, especially during extreme weather. Includes undergrounding, smart switches, vegetation management, and substation flood-proofing.",
+      "typicalScale": { "min": 5, "max": 50, "unit": "km of network" },
+      "technologyIds": ["grid-upgrade-distribution"],
+      "financingArchetypeIds": ["dfi-concessional", "green-bond"],
+      "prerequisites": [
+        "Utility cooperation or concession agreement",
+        "Outage/vulnerability mapping",
+        "Flood risk assessment for substations"
+      ],
+      "impactIndicators": {
+        "emissionsReduction": { "range": "Indirect — reduces technical losses (5-15% improvement)", "basis": "Lower line losses reduce upstream generation" },
+        "reliabilityImprovement": { "range": "30-60% reduction in SAIDI", "basis": "Comparable projects in Latin America" },
+        "beneficiaries": "All connected households and businesses in upgraded area"
+      },
+      "contextSignals": {
+        "supportive": [
+          "High outage frequency (SAIDI > 20 hours/year)",
+          "Recent extreme weather events causing grid failures",
+          "Utility under-investment post-privatization",
+          "Climate projections showing increased storm intensity"
+        ],
+        "blocking": [
+          "Utility unwilling to participate",
+          "No regulatory framework for resilience investment recovery"
+        ]
+      },
+      "localRelevance": {
+        "portoAlegre": "Critical — Jan 2024 storm left 1.1M without power; May 2024 floods collapsed grid in POA. Post-privatization maintenance has deteriorated. PLAC drainage works depend on reliable power for pump stations."
+      },
+      "maturityTier": "proven",
+      "implementationTimeline": "18-36 months"
+    },
+    {
+      "id": "building-efficiency-public",
+      "name": "Energy Efficiency Retrofit — Public Buildings",
+      "category": "efficiency",
+      "sector": "I.2",
+      "sectorLabel": "Commercial/Institutional",
+      "description": "Bundle of efficiency measures for public buildings: LED lighting, HVAC optimization, insulation, smart building controls. Quick wins with short payback.",
+      "typicalScale": { "min": 5, "max": 100, "unit": "buildings" },
+      "technologyIds": ["energy-efficiency-buildings"],
+      "financingArchetypeIds": ["municipal-budget", "climate-fund-grant"],
+      "prerequisites": [
+        "Energy audit of target buildings",
+        "Municipal procurement for retrofit services"
+      ],
+      "impactIndicators": {
+        "emissionsReduction": { "range": "15-40% per building", "basis": "Energy consumption reduction" },
+        "costSavings": { "range": "20-40%", "basis": "Electricity + gas bill reduction" },
+        "beneficiaries": "Building occupants + municipal budget"
+      },
+      "contextSignals": {
+        "supportive": [
+          "High electricity tariffs",
+          "Old building stock (>20 years)",
+          "No prior efficiency program",
+          "Municipal climate action plan commitment"
+        ],
+        "blocking": [
+          "Buildings scheduled for demolition or major renovation"
+        ]
+      },
+      "localRelevance": {
+        "portoAlegre": "High — POA has initiated LED and retrofit projects. This action scales what's already started. Pairs naturally with solar-public-buildings."
+      },
+      "maturityTier": "proven",
+      "implementationTimeline": "6-12 months"
+    },
+    {
+      "id": "electric-bus-fleet",
+      "name": "Electric Bus Fleet Transition",
+      "category": "transport_electrification",
+      "sector": "II.1",
+      "sectorLabel": "On-road Transport",
+      "description": "Replace diesel buses with electric buses and deploy charging infrastructure. Addresses transport emissions (largest energy sector in RS) and air quality.",
+      "typicalScale": { "min": 10, "max": 500, "unit": "buses" },
+      "technologyIds": [],
+      "financingArchetypeIds": ["dfi-concessional", "climate-fund-grant", "green-bond"],
+      "prerequisites": [
+        "Route electrification feasibility study",
+        "Charging infrastructure site availability",
+        "Grid capacity at bus depots",
+        "Concession contract allowing fleet transition"
+      ],
+      "impactIndicators": {
+        "emissionsReduction": { "range": "40-80 tCO2e/bus/year", "basis": "Diesel displacement, local grid factor" },
+        "airQuality": "Significant PM2.5 and NOx reduction along routes",
+        "beneficiaries": "Bus riders, communities along bus routes"
+      },
+      "contextSignals": {
+        "supportive": [
+          "Existing bus fleet >10 years old",
+          "High diesel prices",
+          "Municipal e-bus commitment or pilot",
+          "Available depot space for chargers"
+        ],
+        "blocking": [
+          "Grid cannot support depot charging load",
+          "Bus concession contract prevents fleet changes"
+        ]
+      },
+      "localRelevance": {
+        "portoAlegre": "In progress — POA committed to 100 electric buses in PLAC. Charging infrastructure being planned. This action supports scaling beyond the initial 100."
+      },
+      "maturityTier": "scaling",
+      "implementationTimeline": "12-36 months"
+    },
+    {
+      "id": "community-solar-resilience",
+      "name": "Community Solar + Storage for Resilience",
+      "category": "generation",
+      "sector": "I.1",
+      "sectorLabel": "Residential",
+      "description": "Deploy community-scale solar PV with battery storage in vulnerable neighborhoods to provide resilient power during grid outages and reduce energy costs for low-income households.",
+      "typicalScale": { "min": 0.1, "max": 2, "unit": "MWp + MWh storage" },
+      "technologyIds": ["solar-pv-ground", "battery-storage", "distributed-generation-micro"],
+      "financingArchetypeIds": ["climate-fund-grant", "ppp-light"],
+      "prerequisites": [
+        "Community land or public land available",
+        "Community engagement and governance model",
+        "Distributed generation regulatory framework"
+      ],
+      "impactIndicators": {
+        "emissionsReduction": { "range": "50-200 tCO2e/MWp/year", "basis": "Grid displacement" },
+        "resilience": "4-12 hours backup during grid outage for critical loads",
+        "beneficiaries": "50-500 low-income households per installation"
+      },
+      "contextSignals": {
+        "supportive": [
+          "Frequent grid outages in target area",
+          "High energy poverty rate",
+          "Available community or public land",
+          "Social tariff beneficiaries (low-income)",
+          "Post-disaster reconstruction context"
+        ],
+        "blocking": [
+          "No suitable land",
+          "Community opposition",
+          "Regulatory barrier to community generation"
+        ]
+      },
+      "localRelevance": {
+        "portoAlegre": "High — May 2024 floods left 138,000 without power. Pump stations failed. Community solar+storage in flood-affected neighborhoods addresses both equity and resilience."
+      },
+      "maturityTier": "emerging",
+      "implementationTimeline": "12-24 months"
+    },
+    {
+      "id": "biomethane-waste",
+      "name": "Biomethane from Municipal Solid Waste",
+      "category": "generation",
+      "sector": "III.1",
+      "sectorLabel": "Solid Waste Disposal",
+      "description": "Capture landfill gas or process organic waste via anaerobic digestion to produce biomethane for vehicle fuel or grid injection.",
+      "typicalScale": { "min": 10000, "max": 200000, "unit": "m3/day biomethane" },
+      "technologyIds": [],
+      "financingArchetypeIds": ["ppp-light", "dfi-concessional", "climate-fund-grant"],
+      "prerequisites": [
+        "Landfill with sufficient gas generation or organic waste stream",
+        "Offtake agreement (bus fleet, gas grid injection, industrial user)",
+        "Environmental licensing for biogas plant"
+      ],
+      "impactIndicators": {
+        "emissionsReduction": { "range": "Avoided methane emissions + fossil fuel displacement", "basis": "Methane GWP 28x CO2" },
+        "wasteReduction": "Reduces landfill volume and odor",
+        "beneficiaries": "Municipal fleet, surrounding community (air quality)"
+      },
+      "contextSignals": {
+        "supportive": [
+          "Active landfill with >500 t/day waste input",
+          "Existing Pacto de Biometano participation",
+          "Municipal fleet conversion to gas/biomethane",
+          "Landfill life extension needed"
+        ],
+        "blocking": [
+          "Insufficient organic waste fraction",
+          "No offtake market",
+          "Landfill closure imminent"
+        ]
+      },
+      "localRelevance": {
+        "portoAlegre": "Active — POA joined Pacto do Biometano. Landfills in Minas do Leão and São Leopoldo already produce ~100,000 m3/day. Natural pairing with electric bus fleet transition."
+      },
+      "maturityTier": "proven",
+      "implementationTimeline": "18-36 months"
+    },
+    {
+      "id": "street-lighting-led",
+      "name": "LED Street Lighting Conversion",
+      "category": "efficiency",
+      "sector": "I.2",
+      "sectorLabel": "Commercial/Institutional",
+      "description": "Convert municipal street lighting to LED with smart dimming controls. One of the fastest, most bankable municipal energy actions globally.",
+      "typicalScale": { "min": 5000, "max": 200000, "unit": "luminaires" },
+      "technologyIds": ["energy-efficiency-buildings"],
+      "financingArchetypeIds": ["municipal-budget", "ppp-light", "dfi-concessional"],
+      "prerequisites": [
+        "Street lighting inventory",
+        "Utility agreement on billing/metering",
+        "Procurement pathway (direct or PPP)"
+      ],
+      "impactIndicators": {
+        "emissionsReduction": { "range": "50-70% per luminaire", "basis": "Energy consumption reduction" },
+        "costSavings": { "range": "40-65%", "basis": "Electricity bill reduction" },
+        "beneficiaries": "All residents (safety, visibility), municipal budget"
+      },
+      "contextSignals": {
+        "supportive": [
+          "Existing stock is sodium/mercury vapor (>10 years old)",
+          "High street lighting electricity bill",
+          "Public safety concerns in underlit areas",
+          "PPP framework available for ESCO model"
+        ],
+        "blocking": [
+          "Recently converted to LED (<5 years ago)"
+        ]
+      },
+      "localRelevance": {
+        "portoAlegre": "Medium-High — POA has started LED initiatives. Full city-wide conversion would be a quick, visible win with strong payback. ESCO model via PPP-light is well suited."
+      },
+      "maturityTier": "proven",
+      "implementationTimeline": "6-18 months"
+    }
+  ]
+}
