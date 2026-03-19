@@ -130,6 +130,7 @@ Best neighborhoods = high solar potential + low IPTU revenue (city forfeits less
 A list of reference projects from other cities/states that implemented IPTU-based solar incentives:
 - Each entry shows: city/state name, program name, brief summary of results and learnings (2–3 sentences), and a "Learn more" link
 - Mock data for MVP (3–4 examples from Brazilian cities that have IPTU Verde/Sustentável programs)
+- Reference this file: data/Intervention_BuildingSolarPolicy_dataAnalysis/comparable_projects.md
 
 #### Tab 3: Next Steps
 
