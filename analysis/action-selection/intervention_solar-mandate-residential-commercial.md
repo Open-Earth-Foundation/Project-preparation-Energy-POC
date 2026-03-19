@@ -28,15 +28,41 @@ Implement regulatory and fiscal policies that mandate and incentivize distribute
 
 C40 defines this as a single high-impact action. Porto Alegre delivers it through three coordinated policy instruments drawn from PLAC sub-actions:
 
-| Policy Instrument | PLAC Sub-Action | What It Does |
-|-------------------|-----------------|--------------|
-| **Sustainable Certification Program** (Decree 21.789/2022) | 6.1 — Promote certification | Sets technical criteria. Awards points for solar PV, efficient lighting, NbS. Already active. |
-| **Building Code Update** | 6.4 — Mandatory energy/water efficiency criteria | Makes solar-readiness or solar installation a code requirement for new builds. Short-term timeline. |
-| **IPTU Sustentavel** (property tax incentive) | 6.6 — Expand fiscal incentives | Reduces property tax for buildings that install solar PV or meet certification thresholds. Drives retrofit adoption. |
+| Policy Instrument | PLAC Sub-Action | Role in the Policy Stack |
+|-------------------|-----------------|--------------------------|
+| **Sustainable Certification Program** (Decree 21.789/2022) | 6.1 / 6.2 — Promote and mandate certification | **Technical standard-setter.** Defines what "sustainable" means in measurable terms — awards points for solar PV, efficient lighting, NbS integration. Sets the qualifying threshold for IPTU Sustentável. Already active. |
+| **Building Code Update** | 6.4 — Mandatory energy/water efficiency criteria | **Regulatory floor for new construction.** Makes energy and water efficiency criteria legally mandatory for new builds. Creates the minimum compliance bar. Meeting code alone does not qualify a building for IPTU — certification goes above it. |
+| **IPTU Sustentável** (property tax incentive) | 6.6 — Expand fiscal incentives | **Economic pull for all building types.** Reduces property tax for buildings (residential, commercial, industrial, service) that install solar PV or achieve certification thresholds. The certification program is the qualifying gate; IPTU is the reward. Primary driver for retrofits of existing buildings, where no code mandate applies. |
 
-The combination of mandate (code) + incentive (IPTU) + standard (certification) is what makes this a complete renewable energy mandate in C40 terms.
+### How the three instruments interlock
 
-**Alignment strength:** Direct. POA goes beyond what C40 requires — it pairs mandates with fiscal incentives, creating both a regulatory push and an economic pull.
+```
+New buildings:      Code mandate (must comply) → Certification (voluntary, above code) → IPTU reward (if certified)
+Existing buildings: No code mandate applies    → Certification (voluntary)              → IPTU reward (primary driver)
+```
+
+- **Certification** is the common technical language shared by both the building code and IPTU Sustentável. It defines the bar that unlocks the fiscal benefit.
+- **Building Code** is the stick for new construction — it pushes the baseline up but does not reward performance above the minimum.
+- **IPTU Sustentável** is the carrot for both new and existing buildings — it rewards going above the code minimum. For retrofits, it is the only incentive mechanism available, since the code does not apply retroactively.
+
+Neither the code nor IPTU alone would drive adoption at scale. The code pushes new builds; IPTU pulls retrofits; the certification gives both a shared technical reference.
+
+**Alignment strength:** Direct. POA goes beyond what C40 requires — it pairs mandates with fiscal incentives, creating both a regulatory push and an economic pull across new construction and existing building stock.
+
+### IPTU Sustentável — what the PLAC specifies and what it does not
+
+The PLAC (PMPOA23A_P6_PLACPOA_V2.0) treats IPTU Sustentável at the level of a proposed sub-action (6.6), not as a fully designed fiscal instrument. The following table distinguishes what is documented from what remains undefined:
+
+| Question | Status in PLAC |
+|----------|---------------|
+| Does IPTU Sustentável apply to all building types (residential, commercial, industrial, service)? | **Yes** — sub-action 6.6 states "new sustainable builds and retrofits" with no building type restriction. |
+| Is installing PV alone sufficient to qualify for existing buildings? | **No provision.** The PLAC does not specify qualifying criteria. The Sustainability Certification Program (Decree 21.789/2022) is the likely gate, but the link between PV-only installations and IPTU eligibility is not defined. |
+| What are the discount rates? | **No provision.** No discount percentages, tiers, or caps are stated in the PLAC. |
+| Is there a minimum system size or performance threshold? | **No provision.** |
+| How is the incentive administered (application process, verification, duration)? | **No provision.** The PLAC delegates design to SMAMUS, SMP, and SMF at medium-term timeline. |
+| What is the fiscal cost estimate for the municipality? | Partial — the PLAC cost-effectiveness analysis attributes R$6M in government cost to the broader POA-E-06 action, but does not break this down by sub-action or specify how much is reserved for IPTU revenue foregone. |
+
+**In summary:** The PLAC establishes the intent and institutional responsibility for IPTU Sustentável expansion, but the operational design — qualifying criteria, discount rates, application procedures — is left to a subsequent regulatory process led by SMF. These details are not available in the source documents held in this repository.
 
 ---
 
@@ -100,7 +126,8 @@ This intervention does not operate alone. It depends on an active state-level po
 |-----------|-------------|------------|
 | **2030 target** | 8% of households (~36,542 HH) | 10% of commercial buildings |
 | **Typical system size** | 3-5 kWp per household | 20-200 kWp per building |
-| **Primary policy lever** | IPTU Sustentavel (tax incentive) | Building Code mandate + certification |
+| **Primary policy lever** | IPTU Sustentável (tax incentive) + Building Code mandate | Building Code mandate + certification + IPTU Sustentável |
+| **IPTU Sustentável role** | High impact — addresses upfront cost barrier for homeowners | Applicable — incentivizes retrofits and green-certified new builds |
 | **Payback driver** | High residential tariff (R$0.80/kWh) | Energy cost reduction + green certification value |
 | **Adoption barrier** | Upfront cost for homeowners | Split incentive (tenant vs. owner) |
 | **Equity consideration** | Target IPTU incentives to low-income neighborhoods using br_ibge census data | Less equity concern; focus on high-consumption zones |
