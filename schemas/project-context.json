@@ -20,6 +20,7 @@
     "createdAt": { "type": "string", "format": "date-time" },
     "updatedAt": { "type": "string", "format": "date-time" },
     "version": { "type": "integer", "minimum": 1 },
+    "actionSelection": { "$ref": "action-selection.json" },
     "siteSelection": { "$ref": "site-selection.json" },
     "technologySelection": { "$ref": "technology-selection.json" },
     "research": {
@@ -30,7 +31,7 @@
         "properties": {
           "id": { "type": "string" },
           "topic": { "type": "string" },
-          "component": { "enum": ["site-selection", "technology-selection", "general"] },
+          "component": { "enum": ["action-selection", "site-selection", "technology-selection", "general"] },
           "summary": { "type": "string" },
           "sources": {
             "type": "array",

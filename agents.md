@@ -10,6 +10,7 @@ Energy project preparation PoC focused on site selection and technology selectio
 ## Architecture Rules
 
 - This repo does NOT contain application code — the app is Geo-Layer-Viewer
+- `context/` holds baseline context organized by dimension (geographic, technology, financing, regulatory, projects) — always consult before analysis
 - Analysis scripts in `analysis/` talk to Geo-Layer-Viewer via `analysis/shared/geo_client.py`
 - All reference data lives in `data/` as JSON — keep it human-editable and git-versioned
 - Schemas in `schemas/` define the contracts between analysis, agents, and outputs
@@ -34,7 +35,13 @@ Energy project preparation PoC focused on site selection and technology selectio
 **Scope**: Web search, literature review, benchmark collection, policy analysis
 
 **Rules**:
-- Store findings as structured JSON in `data/research/`
+- Store structured findings (JSON with provenance) in `data/research/`
+- Store analytical documents and reports in the appropriate `context/` subdirectory:
+  - Geographic/spatial context → `context/geographic/<scale>/`
+  - Technology landscape → `context/technology/`
+  - Funder preferences, past approvals → `context/financing/`
+  - Policy and regulatory → `context/regulatory/`
+  - Reference projects → `context/projects/`
 - Always include source URLs, retrieval dates, and confidence notes
 - Never overwrite existing research — append with timestamps
 - Use `agent/prompts/research-synthesis.md` as the base prompt
@@ -89,6 +96,7 @@ Energy project preparation PoC focused on site selection and technology selectio
 
 | Type | Location | Format |
 |------|----------|--------|
+| Context docs | `context/<dimension>/<topic>.md` | Markdown reports, PDFs, analytical docs |
 | Reference data | `data/*.json` | Flat JSON, git-versioned, human-editable |
 | Research | `data/research/<category>/<topic>.json` | Structured JSON with provenance |
 | Analysis scripts | `analysis/<component>/<script>.py` | Python |

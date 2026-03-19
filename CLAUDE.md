@@ -2,7 +2,7 @@
 
 ## Project
 
-Energy Project Preparation PoC — site selection and technology selection at pre-feasibility scope for Porto Alegre, Brazil.
+Energy Project Preparation PoC — action selection, site selection, and technology selection at pre-feasibility scope for Porto Alegre, Brazil.
 
 ## Key Context
 
@@ -10,13 +10,15 @@ Energy Project Preparation PoC — site selection and technology selection at pr
 - This repo is documentation, data, analysis, and agent tooling — not a standalone app
 - Python for analysis scripts, JSON for data, Markdown for docs/prompts
 - Pre-feasibility scope: ranges and archetypes, not engineering precision
-- `city_data/` contains Porto Alegre PLAC (climate action plan) documents
+- `context/` contains baseline context organized by dimension (geographic, technology, financing, regulatory, projects)
 - See agents.md for agent role definitions and rules
 
 ## Important Files
 
-- `data/layers-energy-mapping.json` — maps Geo-Layer-Viewer layers to energy use cases
+- `context/` — baseline context: geographic, technology, financing, regulatory, reference projects
+- `data/energy-action-catalog.json` — action archetypes (upstream of site/tech selection)
 - `data/energy-tech-catalog.json` — technology archetypes and parameters
+- `data/layers-energy-mapping.json` — maps Geo-Layer-Viewer layers to energy use cases
 - `schemas/` — JSON Schema contracts for all structured data
 - `agent/prompts/` — versioned prompt templates (always note changes)
 - `analysis/shared/geo_client.py` — Geo-Layer-Viewer API wrapper
@@ -33,6 +35,7 @@ Energy Project Preparation PoC — site selection and technology selection at pr
 ## Commands
 
 - Run tests: `pytest tests/`
+- Run action selection: `python -m analysis.action-selection.run_action_selection --city "BR POA"`
 - Validate data files: `python -m analysis.shared.data_loader --validate`
 - Test geo client connection: `python -m analysis.shared.geo_client --test`
 

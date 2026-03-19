@@ -10,8 +10,9 @@ This PoC helps cities move from prioritized climate actions to finance-ready ene
 
 ### Components
 
-1. **Site Selection** — Identify and score candidate zones using geospatial data, constraints, and multi-criteria analysis
-2. **Technology Selection** — Match energy technologies (solar PV, storage, grid upgrades, efficiency bundles, distributed generation) to site characteristics
+1. **Action Selection** — Identify and prioritize high-impact energy actions based on context signals, existing commitments, and funder priorities. Actions are upstream of site/technology selection.
+2. **Site Selection** — Identify and score candidate zones using geospatial data, constraints, and multi-criteria analysis
+3. **Technology Selection** — Match energy technologies (solar PV, storage, grid upgrades, efficiency bundles, distributed generation) to site characteristics
 
 ## Architecture
 
@@ -38,11 +39,17 @@ This repo is the **energy domain brain** — documentation, reference data, anal
 ## Repo Structure
 
 ```
-city_data/             City-specific documents (PLAC climate action plan)
+context/               Baseline context that informs analysis
+  geographic/          Spatial context by scale (brazil, RS, porto-alegre)
+  technology/          Technology landscape, deployments, supply chain
+  financing/           Funder preferences, past approvals, eligibility
+  regulatory/          Energy policy, net metering, licensing, incentives
+  projects/            Reference projects — funded, implemented, lessons learned
 docs/                  Architecture, methodology, data source catalog
 data/                  Reference data (JSON) + curated research
   research/            Benchmarks, policies, case studies
 analysis/              Python analysis scripts
+  action-selection/    Context signals, action scoring, portfolio building
   site-selection/      Candidate zones, constraint filtering, scoring
   technology-selection/ Tech matching, sizing estimates
   shared/              API clients (Geo-Layer-Viewer, Global API), data loaders

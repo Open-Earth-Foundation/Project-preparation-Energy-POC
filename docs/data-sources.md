@@ -31,9 +31,10 @@ Catalog of external data sources used by the Energy PoC.
 | SEEG v2023 | Brazilian city-level emissions by GPC sector | Brazil |
 | Climate TRACE v2025 | Facility-level emissions | Global |
 
-## City Documents (in repo)
+## Context Documents (in repo)
 
 | File | Description |
 |------|-------------|
-| `city_data/Sumario Executivo PLAC V7 - EN.pdf` | Porto Alegre Climate Action Plan - Executive Summary (English) |
-| `city_data/P1_PLAC_PlanoTrabalho 9.pdf` | Porto Alegre Climate Action Plan - Work Plan |
+| `context/geographic/porto-alegre/plac-executive-summary-v7-en.pdf` | Porto Alegre Climate Action Plan - Executive Summary (English) |
+| `context/geographic/porto-alegre/plac-work-plan-v9.pdf` | Porto Alegre Climate Action Plan - Work Plan |
+| `context/geographic/rio-grande-do-sul/energy-context-rs-poa.md` | Energy context analysis of RS and Porto Alegre |
