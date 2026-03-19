@@ -29,6 +29,8 @@ The May 2024 floods — which left 138,000 people without power and disabled cri
 
 This assessment identifies **4 priority actions**, **3 complementary actions**, and **3 enabling/conditional actions** that form a coherent portfolio. The priority actions address the most urgent needs (grid resilience, distributed generation) while aligning with all three policy levels and available financing. The portfolio is designed to maximize synergies — solar on public buildings pairs with efficiency retrofits; biomethane connects to bus fleet electrification; community solar+storage directly addresses flood resilience.
 
+A critical governance finding: **distribution grid resilience is the highest-impact energy priority for RS State**, but the grid is a state/federal concession — Porto Alegre does not control it. The assessment therefore splits grid resilience into a state-led component (network hardening, led by ANEEL/utility) and a city-led component (critical facility micro-grids at pump stations and hospitals). The city should pursue micro-grids immediately while advocating to RS State for the broader grid hardening program.
+
 The scoring framework weights context alignment (25%), commitment alignment (20%), impact potential (20%), financing readiness (15%), implementation readiness (10%), and portfolio synergy (10%). Actions are classified as Priority (≥70), Complementary (55–69), or Enabling/Conditional (<55) based on composite scores.
 
 ---
@@ -147,12 +149,51 @@ These commitments represent actions already in motion — alignment boosts scori
 - **Estimated Score**: **~82** (highest context alignment)
 - **Why Priority**: The single most urgent action. Jan 2024 storm left 1.1M without power in RS; May 2024 floods collapsed POA's grid, disabling pump stations and leaving 138K without electricity. Post-privatization service quality has declined. Every other energy action depends on a functioning grid.
 - **Policy alignment**: Triple-aligned (SIN reliability, TEJ, PLAC Resiliente)
-- **Key activities**: Substation flood-proofing, undergrounding critical lines, smart switches, vegetation management, micro-grid islands for critical facilities (hospitals, pump stations)
-- **Scale**: 5–50 km of network per phase
-- **Financing**: DFI concessional loans (high interest post-disaster), green bonds. Funder priority: resilience is top category.
-- **Implementation timeline**: 18–36 months
-- **Critical dependency**: Requires utility cooperation (CEEE Equatorial / RGE). Post-privatization governance is a risk.
 - **PLAC link**: Actions 21–22 (flood/drainage infrastructure depend on reliable power for pump stations)
+
+> **GOVERNANCE NOTE — Highest Impact Priority for RS State**
+>
+> The distribution grid is a **state/federal concession** operated by private concessionaires (CEEE Equatorial, RGE) under ANEEL regulation. **The municipality of Porto Alegre does not control the distribution network.** This critical distinction splits the action into two components:
+>
+> **Component A — Distribution Network Hardening (RS State / Utility / ANEEL-led)**
+>
+> This is the **highest-impact energy priority for Rio Grande do Sul** as a state, because it addresses the root cause of cascading infrastructure failures during extreme weather and affects all municipalities in the state, not just Porto Alegre.
+>
+> | Asset | Operator | Regulator | POA Municipality Role |
+> |-------|----------|-----------|----------------------|
+> | Distribution lines & transformers | CEEE Equatorial / RGE | ANEEL (federal) | Customer / advocate only |
+> | Transmission (230kV+) | CPFL Energia | ANEEL | No role |
+> | Substations | CEEE Equatorial / RGE | ANEEL | No role |
+>
+> - **Who leads**: RS State Government, ANEEL, concessionaires (CEEE Equatorial, RGE, CPFL)
+> - **Key activities**: Substation flood-proofing (elevate equipment above May 2024 flood line), undergrounding critical feeders (10–30 km priority corridors), smart grid switches and fault isolation (100–300 devices), vegetation management programs, flood-resilient design standards for new infrastructure
+> - **Scale**: 5–50 km of network per phase; state-wide applicability
+> - **Estimated cost**: US$ 30–80M for Phase 1 in POA metropolitan area
+> - **Financing**: Green bonds (utility), DFI concessional loans to utility (World Bank, IDB, BNDES), ANEEL regulatory mandate (tariff recovery)
+> - **Implementation timeline**: 18–36 months
+> - **Critical risk**: Post-privatization governance — municipality cannot compel utility investment. Levers include ANEEL quality standards (SAIDI/SAIFI penalties), DFI financing that reduces utility cost of capital, and public/political pressure (Jan 2024 street protests)
+> - **Why this is RS's #1 priority**: The Jan 2024 storm and May 2024 floods demonstrated that the grid is the single point of failure for the entire urban infrastructure system. Pump stations, hospitals, water treatment, and emergency services all depend on it. Without grid hardening, every other energy and climate action is undermined.
+>
+> **Component B — Critical Facility Micro-Grids (POA Municipality-led)**
+>
+> This is what Porto Alegre **can do directly** to protect its most critical facilities from grid outages, without requiring utility cooperation.
+>
+> - **Who leads**: Prefeitura de Porto Alegre (SMAMUS, SMOI)
+> - **Key activities**: Install solar PV + battery storage + automatic transfer switches at critical municipal facilities, enabling them to island from the grid during outages
+> - **Priority facilities**:
+>   1. **Drainage pump stations** (12–15 sites) — the #1 lesson of May 2024; pump failure caused cascading flooding
+>   2. **Emergency hospitals and health centers** (10–15 sites) — particularly in flood-prone zones
+>   3. **Emergency coordination centers** — civil defense, fire stations
+>   4. **Water treatment plants** — water supply depends on grid power
+>   5. **Schools serving as emergency shelters** (10–20 sites) — during May 2024, schools housed displaced families without backup power
+> - **Typical system per facility**: 50–500 kWp solar PV, 100–1,000 kWh battery storage, automatic transfer switch + islanding capability, smart energy management
+> - **Scale**: 20–50 critical facilities in Phase 1
+> - **Estimated cost**: US$ 5–15M for Phase 1
+> - **Financing**: DFI concessional loans (strong post-disaster fit), climate adaptation funds (GCF, Adaptation Fund), can be embedded in the R$ 6 billion drainage/flood protection program
+> - **Implementation timeline**: 12–24 months
+> - **Why this works**: Full municipal control — no utility negotiation needed. The May 2024 pump station failures make the case self-evident. Merges naturally with the Solar PV on Public Buildings action.
+>
+> **Recommendation**: POA should pursue Component B immediately (within municipal control) while advocating to RS State and ANEEL for Component A. The two are complementary — micro-grids protect critical facilities in the near term; grid hardening addresses systemic vulnerability in the medium term.
 
 #### 4.1.2 Solar PV on Public Buildings
 
@@ -275,8 +316,9 @@ These commitments represent actions already in motion — alignment boosts scori
 - PLAC actions: POA-E-06, POA-E-07, POA-E-08
 
 **Cluster B — Grid Resilience + Community Energy Security**
-- Grid Resilience Upgrade → Community Solar+Storage → Urban Tree Canopy
-- Logic: Harden the grid backbone, then add distributed resilience for vulnerable neighborhoods, then reduce thermal stress on infrastructure.
+- Critical Facility Micro-Grids (POA-led) → Community Solar+Storage → Urban Tree Canopy
+- In parallel: Advocate to RS State / ANEEL for Distribution Network Hardening (state-led)
+- Logic: Secure critical municipal facilities first (pump stations, hospitals), then add distributed resilience for vulnerable neighborhoods, then reduce thermal stress on infrastructure. Grid backbone hardening is the state's responsibility but POA should actively push for it.
 - Post-flood financing: DFI recovery windows, climate adaptation funds.
 - PLAC actions: POA-RES-E-01, Actions 21–22
 
@@ -296,20 +338,22 @@ These commitments represent actions already in motion — alignment boosts scori
 **Phase 1 (0–12 months) — Foundation and Quick Wins**
 1. Energy efficiency retrofit of public buildings (6–12 months, lowest complexity)
 2. LED street lighting conversion (6–18 months, strong payback)
-3. Grid resilience assessment and initial hardening (starts immediately, 18+ months total)
+3. Critical facility micro-grids — pump station and hospital assessments + first installations (POA-led, 12–24 months total)
 4. Community solar+storage site identification and community engagement
+5. Begin advocacy to RS State / ANEEL for distribution network hardening program
 
 **Phase 2 (6–24 months) — Core Deployment**
-5. Solar PV on public buildings (6–18 months, follows efficiency audits)
-6. Community solar+storage first installations in flood-affected areas
-7. Electric bus fleet — first 100 buses + charging infrastructure
-8. Biomethane offtake agreements and plant optimization
+6. Solar PV on public buildings (6–18 months, follows efficiency audits)
+7. Critical facility micro-grids — remaining priority facilities
+8. Community solar+storage first installations in flood-affected areas
+9. Electric bus fleet — first 100 buses + charging infrastructure
+10. Biomethane offtake agreements and plant optimization
 
 **Phase 3 (18–36 months) — Scale and Integration**
-9. Grid resilience full deployment (undergrounding, smart switches)
-10. Solar PV scale-up to remaining public buildings
-11. E-bus fleet expansion beyond 100
-12. Biomethane grid injection or expanded vehicle fuel use
+11. RS State / Utility: Distribution network hardening deployment (undergrounding, smart switches, substation flood-proofing)
+12. Solar PV scale-up to remaining public buildings
+13. E-bus fleet expansion beyond 100
+14. Biomethane grid injection or expanded vehicle fuel use
 
 **Phase 4 (36+ months) — Future Actions**
 13. Green hydrogen demand integration (tracks state-level progress)
