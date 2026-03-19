@@ -1,0 +1,106 @@
+{
+  "version": "0.1.0",
+  "lastUpdated": "2026-03-19",
+  "description": "Energy technology archetypes for pre-feasibility assessment. Ranges and defaults, not engineering precision.",
+  "technologies": [
+    {
+      "id": "solar-pv-ground",
+      "name": "Ground-Mounted Solar PV",
+      "category": "solar_pv",
+      "subcategory": "ground_mount",
+      "description": "Utility or community-scale ground-mounted photovoltaic systems",
+      "typicalCapacityRange": { "min": 1, "max": 100, "unit": "MWp" },
+      "areaPerMW": { "min": 10000, "max": 20000, "unit": "m2/MW" },
+      "capexRange": { "min": 700, "max": 1200, "unit": "USD/kW", "year": 2024 },
+      "lcoeRange": { "min": 25, "max": 60, "unit": "USD/MWh" },
+      "capacityFactor": { "min": 0.15, "max": 0.25 },
+      "lifespan": { "min": 25, "max": 30, "unit": "years" },
+      "siteRequirements": {
+        "minSolarGHI": 1400,
+        "maxFloodRisk": "low",
+        "preferredLandCover": ["barren", "grassland", "shrubland"],
+        "excludedLandCover": ["forest", "wetland", "water"],
+        "minAreaM2": 10000
+      },
+      "applicability": "Best for areas with available open land, good solar resource, and grid access within 5km"
+    },
+    {
+      "id": "solar-pv-rooftop",
+      "name": "Rooftop Solar PV",
+      "category": "solar_pv",
+      "subcategory": "rooftop",
+      "description": "Distributed rooftop photovoltaic systems on commercial or residential buildings",
+      "typicalCapacityRange": { "min": 0.003, "max": 1, "unit": "MWp" },
+      "areaPerMW": { "min": 6000, "max": 10000, "unit": "m2/MW" },
+      "capexRange": { "min": 900, "max": 1800, "unit": "USD/kW", "year": 2024 },
+      "lcoeRange": { "min": 40, "max": 90, "unit": "USD/MWh" },
+      "capacityFactor": { "min": 0.13, "max": 0.22 },
+      "lifespan": { "min": 20, "max": 30, "unit": "years" },
+      "siteRequirements": {
+        "minSolarGHI": 1200,
+        "preferredLandCover": ["built_up"],
+        "minBuildingDensity": "suburban"
+      },
+      "applicability": "Best for urban/suburban areas with existing building stock and net-metering policies"
+    },
+    {
+      "id": "battery-storage",
+      "name": "Battery Energy Storage (Li-ion)",
+      "category": "battery_storage",
+      "subcategory": "lithium_ion",
+      "description": "Grid-scale or behind-the-meter lithium-ion battery storage",
+      "typicalCapacityRange": { "min": 0.1, "max": 200, "unit": "MWh" },
+      "capexRange": { "min": 200, "max": 500, "unit": "USD/kWh", "year": 2024 },
+      "lifespan": { "min": 10, "max": 15, "unit": "years" },
+      "siteRequirements": {
+        "maxFloodRisk": "low",
+        "minAreaM2": 500,
+        "requiresGridConnection": true
+      },
+      "applicability": "Pairs with solar PV for peak shaving, arbitrage, or grid stability. Useful where grid reliability is low."
+    },
+    {
+      "id": "grid-upgrade-distribution",
+      "name": "Distribution Grid Upgrade",
+      "category": "grid_upgrade",
+      "subcategory": "distribution",
+      "description": "Upgrades to medium/low voltage distribution network to improve reliability and capacity",
+      "typicalCapacityRange": { "min": 1, "max": 50, "unit": "MVA" },
+      "capexRange": { "min": 50000, "max": 200000, "unit": "USD/km", "year": 2024 },
+      "siteRequirements": {
+        "requiresExistingGrid": true
+      },
+      "applicability": "Needed when existing grid is at capacity or has high technical losses (>15%)"
+    },
+    {
+      "id": "energy-efficiency-buildings",
+      "name": "Building Energy Efficiency Bundle",
+      "category": "efficiency",
+      "subcategory": "buildings",
+      "description": "Package of efficiency measures: LED lighting, HVAC upgrades, insulation, smart controls",
+      "typicalSavings": { "min": 15, "max": 40, "unit": "percent" },
+      "capexRange": { "min": 20, "max": 100, "unit": "USD/m2", "year": 2024 },
+      "paybackPeriod": { "min": 2, "max": 7, "unit": "years" },
+      "siteRequirements": {
+        "preferredLandCover": ["built_up"],
+        "minBuildingDensity": "urban",
+        "requiresExistingBuildings": true
+      },
+      "applicability": "Best for public buildings, schools, hospitals. Quick wins with short payback periods."
+    },
+    {
+      "id": "distributed-generation-micro",
+      "name": "Distributed Micro-Generation",
+      "category": "distributed_generation",
+      "subcategory": "micro",
+      "description": "Community-scale distributed generation: micro-solar, small wind, micro-hydro",
+      "typicalCapacityRange": { "min": 0.001, "max": 0.1, "unit": "MWp" },
+      "capexRange": { "min": 1000, "max": 3000, "unit": "USD/kW", "year": 2024 },
+      "siteRequirements": {
+        "minSolarGHI": 1200,
+        "preferredContext": ["peri-urban", "informal_settlement", "rural"]
+      },
+      "applicability": "For underserved communities with limited grid access. Can improve energy equity and resilience."
+    }
+  ]
+}

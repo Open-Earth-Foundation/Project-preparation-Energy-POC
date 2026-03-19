@@ -1,0 +1,76 @@
+{
+  "version": "0.1.0",
+  "lastUpdated": "2026-03-19",
+  "description": "Default scoring weights for multi-criteria site assessment. Weights sum to 1.0. Adjust per project context.",
+  "siteScoring": {
+    "weights": {
+      "solarResource": {
+        "weight": 0.25,
+        "layerId": "solar-neighbourhoods",
+        "valueField": "pvout",
+        "description": "Annual PV output potential (kWh/kWp/year)",
+        "normalization": { "min": 1000, "max": 1800 }
+      },
+      "floodRisk": {
+        "weight": 0.15,
+        "layerId": "flood-risk-index",
+        "description": "Flood risk index (0-1, inverted: lower is better)",
+        "invert": true,
+        "normalization": { "min": 0, "max": 1 }
+      },
+      "landAvailability": {
+        "weight": 0.20,
+        "layerId": "dynamic-world",
+        "description": "Proportion of suitable land cover types in zone",
+        "suitableClasses": ["barren", "grassland", "shrubland", "built_up"]
+      },
+      "gridProximity": {
+        "weight": 0.15,
+        "layerId": "viirs-night-lights",
+        "description": "Night light intensity as proxy for grid infrastructure (higher = closer to grid)",
+        "normalization": { "min": 0, "max": 60 }
+      },
+      "populationDensity": {
+        "weight": 0.15,
+        "layerId": "ghsl-population",
+        "description": "Population served (higher density = more beneficiaries)",
+        "normalization": { "min": 0, "max": 10000 }
+      },
+      "socialVulnerability": {
+        "weight": 0.10,
+        "layerId": "ibge-indicators",
+        "valueField": "poverty_rate",
+        "description": "Poverty rate — higher values prioritized for equity (higher = more need)",
+        "normalization": { "min": 0, "max": 50 }
+      }
+    },
+    "totalWeight": 1.0,
+    "scoringMethod": "weighted_sum",
+    "outputRange": { "min": 0, "max": 100 }
+  },
+  "technologyScoring": {
+    "weights": {
+      "siteMatch": {
+        "weight": 0.30,
+        "description": "How well the technology fits the site characteristics"
+      },
+      "costEffectiveness": {
+        "weight": 0.25,
+        "description": "LCOE range relative to local electricity tariff"
+      },
+      "implementationReadiness": {
+        "weight": 0.20,
+        "description": "Regulatory framework, supply chain, local expertise"
+      },
+      "impactPotential": {
+        "weight": 0.15,
+        "description": "Emissions reduction, beneficiary reach, resilience contribution"
+      },
+      "riskProfile": {
+        "weight": 0.10,
+        "description": "Technical, regulatory, and financial risk assessment"
+      }
+    },
+    "totalWeight": 1.0
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "technology-selection",
+  "title": "Technology Selection",
+  "description": "Schema for technology selection component outputs. Captures technology matching, sizing, and feasibility assessment.",
+  "type": "object",
+  "properties": {
+    "siteId": { "type": "string", "description": "Reference to the selected candidate zone" },
+    "siteCharacteristics": {
+      "type": "object",
+      "description": "Site properties relevant to tech selection",
+      "properties": {
+        "solarIrradiance": {
+          "type": "object",
+          "properties": {
+            "ghi": { "type": "number", "description": "kWh/m2/year" },
+            "dni": { "type": "number", "description": "kWh/m2/year" },
+            "pvout": { "type": "number", "description": "kWh/kWp/year" }
+          }
+        },
+        "availableAreaM2": { "type": "number" },
+        "landCoverType": { "type": "string" },
+        "gridProximityKm": { "type": "number" },
+        "floodRisk": { "type": "string", "enum": ["none", "low", "medium", "high"] },
+        "builtUpDensity": { "type": "string", "enum": ["rural", "suburban", "urban", "dense_urban"] },
+        "existingInfrastructure": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "technologyShortlist": {
+      "type": "array",
+      "description": "Ranked technology options for this site",
+      "items": {
+        "type": "object",
+        "required": ["id", "technologyId", "name", "feasibilityScore"],
+        "properties": {
+          "id": { "type": "string" },
+          "technologyId": { "type": "string", "description": "ID from energy-tech-catalog.json" },
+          "name": { "type": "string" },
+          "category": {
+            "type": "string",
+            "enum": ["solar_pv", "battery_storage", "grid_upgrade", "efficiency", "distributed_generation", "hybrid"]
+          },
+          "feasibilityScore": { "type": "number", "minimum": 0, "maximum": 100 },
+          "sizing": {
+            "type": "object",
+            "description": "Pre-feasibility sizing ranges",
+            "properties": {
+              "capacityRange": {
+                "type": "object",
+                "properties": {
+                  "min": { "type": "number" },
+                  "max": { "type": "number" },
+                  "unit": { "type": "string" }
+                }
+              },
+              "estimatedOutput": {
+                "type": "object",
+                "properties": {
+                  "min": { "type": "number" },
+                  "max": { "type": "number" },
+                  "unit": { "type": "string" }
+                }
+              },
+              "areaRequired": {
+                "type": "object",
+                "properties": {
+                  "min": { "type": "number" },
+                  "max": { "type": "number" },
+                  "unit": { "type": "string" }
+                }
+              }
+            }
+          },
+          "costEstimate": {
+            "type": "object",
+            "description": "Pre-feasibility cost ranges (USD)",
+            "properties": {
+              "capexRange": {
+                "type": "object",
+                "properties": {
+                  "min": { "type": "number" },
+                  "max": { "type": "number" },
+                  "unit": { "type": "string", "default": "USD/kW" }
+                }
+              },
+              "lcoeRange": {
+                "type": "object",
+                "properties": {
+                  "min": { "type": "number" },
+                  "max": { "type": "number" },
+                  "unit": { "type": "string", "default": "USD/MWh" }
+                }
+              }
+            }
+          },
+          "rationale": { "type": "string" },
+          "risks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "description": { "type": "string" },
+                "severity": { "enum": ["low", "medium", "high"] }
+              }
+            }
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "recommendedTechnologyId": { "type": "string" },
+        "totalOptionsEvaluated": { "type": "integer" },
+        "analysisDate": { "type": "string", "format": "date-time" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

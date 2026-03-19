@@ -1,0 +1,35 @@
+{
+  "id": "solar-pv-brazil-lcoe-2024",
+  "topic": "Solar PV LCOE benchmarks for Brazil",
+  "component": "technology-selection",
+  "summary": "Brazil has some of the lowest solar PV costs globally. Utility-scale solar LCOE ranges from $25-45/MWh in high-irradiance regions. Distributed generation costs are higher at $60-90/MWh but declining rapidly.",
+  "findings": [
+    {
+      "fact": "Brazil utility-scale solar PV LCOE: $25-45/MWh (2024)",
+      "source": "https://www.irena.org/publications/2024/Sep/Renewable-Power-Generation-Costs-in-2023",
+      "date": "2024-09-01",
+      "confidence": "high"
+    },
+    {
+      "fact": "Brazil added 12.8 GW of solar capacity in 2023, reaching 37 GW total installed",
+      "source": "https://www.absolar.org.br",
+      "date": "2024-01-15",
+      "confidence": "high"
+    },
+    {
+      "fact": "Porto Alegre region GHI: 1,500-1,700 kWh/m2/year (moderate-high for Brazil)",
+      "source": "https://globalsolaratlas.info",
+      "date": "2024-01-01",
+      "confidence": "high"
+    },
+    {
+      "fact": "Brazil net metering (MMGD) program allows distributed generation up to 5MW with grid credit",
+      "source": "https://www.aneel.gov.br",
+      "date": "2024-06-01",
+      "confidence": "medium",
+      "note": "Policy under review — net metering rules may change"
+    }
+  ],
+  "retrievedAt": "2026-03-19T00:00:00Z",
+  "relevance": "Informs CAPEX/LCOE assumptions in technology catalog and financing feasibility for Porto Alegre solar projects"
+}

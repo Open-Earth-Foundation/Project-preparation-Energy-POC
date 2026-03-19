@@ -1,0 +1,104 @@
+{
+  "version": "0.1.0",
+  "lastUpdated": "2026-03-19",
+  "description": "Constraint types for energy site selection. Hard constraints are exclusionary; soft constraints are penalties in scoring.",
+  "constraints": [
+    {
+      "id": "flood-risk-high",
+      "name": "High Flood Risk Zone",
+      "type": "geographic",
+      "severity": "hard",
+      "layerId": "flood-risk-index",
+      "operator": "gte",
+      "threshold": 0.7,
+      "description": "Exclude areas with flood risk index >= 0.7 for ground-mounted infrastructure",
+      "applicableTech": ["solar-pv-ground", "battery-storage", "grid-upgrade-distribution"]
+    },
+    {
+      "id": "flood-risk-moderate",
+      "name": "Moderate Flood Risk Zone",
+      "type": "geographic",
+      "severity": "soft",
+      "layerId": "flood-risk-index",
+      "operator": "gte",
+      "threshold": 0.4,
+      "description": "Penalize areas with flood risk index >= 0.4 (requires mitigation measures)",
+      "scorePenalty": 20,
+      "applicableTech": ["solar-pv-ground", "battery-storage"]
+    },
+    {
+      "id": "protected-area",
+      "name": "Protected / Conservation Area",
+      "type": "regulatory",
+      "severity": "hard",
+      "layerId": "dynamic-world",
+      "operator": "in",
+      "threshold": ["forest", "wetland"],
+      "description": "Exclude forests and wetlands from ground-mounted solar development"
+    },
+    {
+      "id": "water-body",
+      "name": "Water Body",
+      "type": "geographic",
+      "severity": "hard",
+      "layerId": "jrc-surface-water",
+      "operator": "gte",
+      "threshold": 50,
+      "description": "Exclude permanent water bodies (occurrence >= 50%)"
+    },
+    {
+      "id": "min-solar-resource",
+      "name": "Minimum Solar Resource",
+      "type": "technical",
+      "severity": "hard",
+      "layerId": "solar-neighbourhoods",
+      "valueField": "ghi",
+      "operator": "lt",
+      "threshold": 1200,
+      "description": "Exclude areas with GHI below 1200 kWh/m2/year for solar PV",
+      "applicableTech": ["solar-pv-ground", "solar-pv-rooftop"]
+    },
+    {
+      "id": "steep-slope",
+      "name": "Steep Terrain",
+      "type": "geographic",
+      "severity": "soft",
+      "layerId": "copernicus-dem",
+      "operator": "gte",
+      "threshold": 15,
+      "description": "Penalize areas with slope > 15 degrees for ground-mounted solar",
+      "scorePenalty": 15,
+      "applicableTech": ["solar-pv-ground"]
+    },
+    {
+      "id": "grid-distance",
+      "name": "Grid Connection Distance",
+      "type": "technical",
+      "severity": "soft",
+      "layerId": "viirs-night-lights",
+      "description": "Use night lights as proxy for grid infrastructure proximity. Low values suggest remote areas requiring longer grid connections.",
+      "scorePenalty": 10
+    },
+    {
+      "id": "dense-urban",
+      "name": "Dense Urban Area",
+      "type": "geographic",
+      "severity": "hard",
+      "layerId": "ghsl-built",
+      "operator": "gte",
+      "threshold": 80,
+      "description": "Exclude very dense built-up areas (>80%) for ground-mounted solar",
+      "applicableTech": ["solar-pv-ground"]
+    },
+    {
+      "id": "informal-settlement",
+      "name": "Informal Settlement",
+      "type": "social",
+      "severity": "soft",
+      "layerId": "ibge-settlements",
+      "description": "Flag informal settlements — may need community engagement approach, but also high-priority for energy access",
+      "scorePenalty": 0,
+      "note": "Not a penalty — flagged for special consideration in business model design"
+    }
+  ]
+}

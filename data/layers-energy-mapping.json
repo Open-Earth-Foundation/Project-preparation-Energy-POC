@@ -1,0 +1,109 @@
+{
+  "version": "0.1.0",
+  "lastUpdated": "2026-03-19",
+  "description": "Maps Geo-Layer-Viewer layer IDs to energy project preparation use cases. Reference this file instead of hardcoding layer IDs.",
+  "layers": {
+    "solar-neighbourhoods": {
+      "relevance": "primary",
+      "component": "site-selection",
+      "use": "Solar PV potential (PVOUT, GHI, DNI) per neighbourhood from Global Solar Atlas",
+      "fields": ["pvout", "ghi", "dni"],
+      "scoringCriterion": "solarResource"
+    },
+    "dynamic-world": {
+      "relevance": "primary",
+      "component": "site-selection",
+      "use": "Land cover classification for constraint filtering and land availability scoring",
+      "scoringCriterion": "landAvailability"
+    },
+    "flood-risk-index": {
+      "relevance": "primary",
+      "component": "site-selection",
+      "use": "Flood risk exclusion/penalty for infrastructure siting",
+      "scoringCriterion": "floodRisk"
+    },
+    "ghsl-built": {
+      "relevance": "primary",
+      "component": "site-selection",
+      "use": "Built-up density for rooftop vs ground-mount technology decisions",
+      "scoringCriterion": null,
+      "techRelevance": "Determines rooftop PV potential vs ground-mount suitability"
+    },
+    "ghsl-population": {
+      "relevance": "primary",
+      "component": "site-selection",
+      "use": "Population density for beneficiary estimation and demand sizing",
+      "scoringCriterion": "populationDensity"
+    },
+    "viirs-night-lights": {
+      "relevance": "secondary",
+      "component": "site-selection",
+      "use": "Proxy for grid infrastructure proximity and electrification status",
+      "scoringCriterion": "gridProximity"
+    },
+    "copernicus-dem": {
+      "relevance": "secondary",
+      "component": "site-selection",
+      "use": "Terrain slope for ground-mount solar feasibility",
+      "constraintId": "steep-slope"
+    },
+    "jrc-surface-water": {
+      "relevance": "constraint",
+      "component": "site-selection",
+      "use": "Water body exclusion for ground-mounted infrastructure",
+      "constraintId": "water-body"
+    },
+    "ibge-indicators": {
+      "relevance": "secondary",
+      "component": "site-selection",
+      "use": "Socioeconomic indicators for equity-weighted scoring",
+      "scoringCriterion": "socialVulnerability"
+    },
+    "ibge-settlements": {
+      "relevance": "context",
+      "component": "site-selection",
+      "use": "Informal settlement locations for energy access prioritization",
+      "constraintId": "informal-settlement"
+    },
+    "transit-stops": {
+      "relevance": "context",
+      "component": "site-selection",
+      "use": "Public transit accessibility of candidate sites"
+    },
+    "transit-routes": {
+      "relevance": "context",
+      "component": "site-selection",
+      "use": "Transit network coverage for workforce/maintenance access"
+    },
+    "modis-ndvi": {
+      "relevance": "context",
+      "component": "site-selection",
+      "use": "Vegetation index — context for environmental impact assessment"
+    },
+    "hansen-forest-loss": {
+      "relevance": "context",
+      "component": "site-selection",
+      "use": "Forest loss history — flag areas with deforestation pressure"
+    },
+    "chirps-r95p": {
+      "relevance": "context",
+      "component": "site-selection",
+      "use": "Extreme precipitation frequency — infrastructure resilience planning"
+    },
+    "era5-txx": {
+      "relevance": "context",
+      "component": "technology-selection",
+      "use": "Extreme temperature — affects PV panel efficiency and storage performance"
+    },
+    "heatwave-magnitude": {
+      "relevance": "context",
+      "component": "technology-selection",
+      "use": "Heatwave projections — demand-side context for cooling/efficiency bundles"
+    },
+    "flood-2024": {
+      "relevance": "context",
+      "component": "site-selection",
+      "use": "2024 flood extent — historical validation of flood risk model"
+    }
+  }
+}

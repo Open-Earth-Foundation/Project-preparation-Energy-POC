@@ -1,0 +1,52 @@
+{
+  "version": "0.1.0",
+  "lastUpdated": "2026-03-19",
+  "description": "Lightweight financing archetypes for technology selection context. Not a full financing module — just enough to inform tech feasibility.",
+  "archetypes": [
+    {
+      "id": "municipal-budget",
+      "name": "Municipal Budget / Public Investment",
+      "description": "City funds from general budget or earmarked climate funds",
+      "typicalScale": { "min": 100000, "max": 5000000, "unit": "USD" },
+      "suitableTech": ["energy-efficiency-buildings", "grid-upgrade-distribution", "solar-pv-rooftop"],
+      "keyRequirements": ["Municipal budget approval", "Public procurement process"],
+      "timeline": "12-24 months"
+    },
+    {
+      "id": "dfi-concessional",
+      "name": "DFI Concessional Loan",
+      "description": "Below-market-rate loans from development finance institutions (IDB, World Bank, BNDES)",
+      "typicalScale": { "min": 1000000, "max": 50000000, "unit": "USD" },
+      "suitableTech": ["solar-pv-ground", "battery-storage", "grid-upgrade-distribution"],
+      "keyRequirements": ["Sovereign or sub-sovereign guarantee", "Environmental and social safeguards", "Concept note / PDD"],
+      "timeline": "18-36 months"
+    },
+    {
+      "id": "ppp-light",
+      "name": "Public-Private Partnership (Light)",
+      "description": "Simplified PPP structure — city provides land/permits, private sector builds/operates",
+      "typicalScale": { "min": 500000, "max": 20000000, "unit": "USD" },
+      "suitableTech": ["solar-pv-ground", "solar-pv-rooftop", "battery-storage"],
+      "keyRequirements": ["PPP legal framework", "Revenue certainty (PPA or net metering)"],
+      "timeline": "12-24 months"
+    },
+    {
+      "id": "climate-fund-grant",
+      "name": "Climate Fund Grant",
+      "description": "Non-repayable grants from GCF, GEF, bilateral climate funds",
+      "typicalScale": { "min": 500000, "max": 10000000, "unit": "USD" },
+      "suitableTech": ["distributed-generation-micro", "energy-efficiency-buildings", "solar-pv-ground"],
+      "keyRequirements": ["Accredited entity", "Concept note", "MRV framework", "Co-benefits demonstration"],
+      "timeline": "12-36 months"
+    },
+    {
+      "id": "green-bond",
+      "name": "Green / Sustainability Bond",
+      "description": "Debt instrument with proceeds earmarked for climate/green projects",
+      "typicalScale": { "min": 10000000, "max": 500000000, "unit": "USD" },
+      "suitableTech": ["solar-pv-ground", "grid-upgrade-distribution", "battery-storage"],
+      "keyRequirements": ["Credit rating", "Green bond framework", "External review/verification"],
+      "timeline": "6-12 months (after framework established)"
+    }
+  ]
+}

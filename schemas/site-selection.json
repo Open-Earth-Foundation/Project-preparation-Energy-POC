@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "site-selection",
+  "title": "Site Selection",
+  "description": "Schema for site selection component outputs. Captures candidate zones, constraint analysis, and scoring.",
+  "type": "object",
+  "properties": {
+    "studyArea": {
+      "type": "object",
+      "description": "The geographic area being analyzed",
+      "properties": {
+        "cityLocode": { "type": "string" },
+        "boundaryGeoJSON": { "type": "object", "description": "GeoJSON polygon of study area" },
+        "areaKm2": { "type": "number" }
+      }
+    },
+    "layers": {
+      "type": "array",
+      "description": "Geo layers used in this analysis",
+      "items": {
+        "type": "object",
+        "properties": {
+          "layerId": { "type": "string", "description": "Geo-Layer-Viewer layer ID" },
+          "purpose": { "type": "string" },
+          "weight": { "type": "number", "minimum": 0, "maximum": 1 }
+        }
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "description": "Constraints applied to filter candidate zones",
+      "items": {
+        "type": "object",
+        "required": ["constraintId", "layerId", "operator", "threshold"],
+        "properties": {
+          "constraintId": { "type": "string" },
+          "layerId": { "type": "string" },
+          "operator": { "enum": ["gt", "gte", "lt", "lte", "eq", "ne", "in", "not_in"] },
+          "threshold": {},
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "candidateZones": {
+      "type": "array",
+      "description": "Ranked candidate zones after constraint filtering and scoring",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "score"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "geometry": { "type": "object", "description": "GeoJSON geometry" },
+          "areaKm2": { "type": "number" },
+          "score": { "type": "number", "minimum": 0, "maximum": 100 },
+          "scoreBreakdown": {
+            "type": "object",
+            "description": "Score per criterion",
+            "additionalProperties": { "type": "number" }
+          },
+          "layerValues": {
+            "type": "object",
+            "description": "Raw layer values at this zone",
+            "additionalProperties": {}
+          },
+          "constraintFlags": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Any soft constraints triggered"
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "totalZonesAnalyzed": { "type": "integer" },
+        "zonesPassingConstraints": { "type": "integer" },
+        "topZoneId": { "type": "string" },
+        "analysisDate": { "type": "string", "format": "date-time" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

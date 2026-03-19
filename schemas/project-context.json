@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "project-context",
+  "title": "Project Context",
+  "description": "Shared project context for energy project preparation. Contains city info, component slices, decisions, and constraints.",
+  "type": "object",
+  "required": ["id", "name", "city", "createdAt", "updatedAt", "version"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "name": { "type": "string" },
+    "city": {
+      "type": "object",
+      "required": ["locode", "name", "country"],
+      "properties": {
+        "locode": { "type": "string", "description": "UN/LOCODE e.g. BR POA" },
+        "name": { "type": "string" },
+        "country": { "type": "string" }
+      }
+    },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "version": { "type": "integer", "minimum": 1 },
+    "siteSelection": { "$ref": "site-selection.json" },
+    "technologySelection": { "$ref": "technology-selection.json" },
+    "research": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "topic", "summary", "sources", "retrievedAt"],
+        "properties": {
+          "id": { "type": "string" },
+          "topic": { "type": "string" },
+          "component": { "enum": ["site-selection", "technology-selection", "general"] },
+          "summary": { "type": "string" },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "url": { "type": "string" },
+                "title": { "type": "string" },
+                "date": { "type": "string" }
+              }
+            }
+          },
+          "retrievedAt": { "type": "string", "format": "date-time" },
+          "confidence": { "type": "string", "enum": ["high", "medium", "low"] }
+        }
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "description", "rationale", "madeAt"],
+        "properties": {
+          "id": { "type": "string" },
+          "component": { "type": "string" },
+          "description": { "type": "string" },
+          "rationale": { "type": "string" },
+          "madeAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "description"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": { "enum": ["geographic", "regulatory", "budget", "technical", "social"] },
+          "description": { "type": "string" },
+          "source": { "type": "string" },
+          "severity": { "enum": ["hard", "soft"] }
+        }
+      }
+    }
+  }
+}

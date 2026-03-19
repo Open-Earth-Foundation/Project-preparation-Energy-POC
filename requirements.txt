@@ -1,0 +1,19 @@
+# Core
+requests>=2.31.0
+
+# Data
+jsonschema>=4.20.0
+
+# Analysis
+# numpy>=1.26.0     # Uncomment when analysis scripts need numerical operations
+# geopandas>=0.14.0 # Uncomment when spatial analysis scripts are implemented
+
+# AI / Agent
+anthropic>=0.40.0
+
+# Testing
+pytest>=8.0.0
+pytest-cov>=4.1.0
+
+# Dev
+python-dotenv>=1.0.0
